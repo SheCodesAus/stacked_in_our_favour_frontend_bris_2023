@@ -1,95 +1,53 @@
-/* Nav Bar */
-#nav-bar {
-    background-color: var(--light-purple);
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.header {
+    background: #8246AF;
+    clear: both;
+    height: 54px;
+    padding: 24px 54px;
+}
+
+#logo {
+    float: left;
+    margin: 0;
+    height: 50px;
+    width: auto;
+}
+
+#navlist {
+    float: right;
+    margin-bottom: 0px;
+    padding-bottom: 24px;
+    padding-top: 10px;
+    margin-top: 0px;
+    /* margin: 16px;
+     */
+}
+
+li {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-right: 10px;
-    padding-left: 10px;
-}
-
-.navbar-logo {
-    width: 124px;
-    height: auto;
-    border: none;
-    outline: none;
+    list-style-type: none;
+    /* padding-right: 20px; */
+    /* padding-top: auto;
+    padding-bottom: auto; */
 }
 
 
-/* Nav link styles */
-.home-link, 
-.signup-link, 
-.profile-link, 
-.newevent-link, 
-.newsticky-link, 
-#login-link {
-    padding: 10px;
-    color: var(--cream);
-    background: var(--light-purple);
+a {
+    color: #ffffff;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
     text-decoration: none;
-    display: block;
-}
-
-/* Hover style */
-.home-link:hover, 
-.signup-link:hover, 
-.profile-link:hover, 
-.newevent-link:hover, 
-.newsticky-link:hover, 
-#login-link:hover {
-    background-color: var(--dark-purple);
-    border-radius: 4px;
-    padding: 10px;
-}
-
-
-/* Updated styles for desktop view */
-.desktop-nav {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-}
-
-.desktop-nav a {
-    margin-right: 20px;
-}
-
-
-
-/* Mobile View */
-.menu-icon {
-    order: 1;
-    width: 20px;
-    height: auto;
-    cursor: pointer;
-    margin-right: 10px;
-    color: var(--cream)
-}
-
-/* Hide the navigation links by default in mobile view */
-#nav-bar.mobile-menu-open .navbar-logo-link,
-#nav-bar.mobile-menu-open nav {
-    display: block;
-}
-
-/* Updated styles for mobile view */
-.mobile-nav {
-    display: none;
-}
-
-.mobile-menu-open .mobile-nav {
-    display: block;
-    text-align: center;
-}
-
-.mobile-nav a {
-    display: block;
-    padding: 10px 0;
-    color: var(--light-purple);
-    text-decoration: none;
-}
-
-.mobile-nav a:hover {
-    background-color: var(--dark-purple);
-    border-radius: 4px;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    /* line-height: 150%; 30px */
 }
