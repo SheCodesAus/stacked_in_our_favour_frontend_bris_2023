@@ -5,12 +5,12 @@ import { useAuth } from '../hooks/use-auth.js';
 import './NavBar.css';
 import '../pages/HomePage.css';
 
-import winstackdesktop from '../img/winstackdesktop.png'
-import winstackmobile from '../img/winstackmobile.png'
+import winstackdesktop from '../img/logo-desktop.png'
+import winstackmobile from '../img/logo-mobile.png'
 
 function NavBar() {
-    const { auth, setAuth } = useAuth();
-    console.log("AUTH TOKEN in NavBar:", auth.token);
+    // const { auth, setAuth } = useAuth();
+    // console.log("AUTH TOKEN in NavBar:", auth.token);
 
     const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768);
 
@@ -47,10 +47,10 @@ function NavBar() {
                     </Link>
                     <nav className="desktop-nav">
                         <Link to="/" className="home-link">Home</Link>
-                        <Link to="/users" className="signup-link">Join WinStack</Link>
-                        <Link to="/users" className="register-link">Unregistered</Link>
-                        <Link to="/events" className="createevent-link">Create Event</Link>
-                        <Link to="/stickies" className="createsticky-link">Create Sticky</Link>
+                        <Link to="/register" className="signup-link">Signup</Link>
+                        <Link to="/profile" className="profile-link">Profile</Link>
+                        <Link to="/event" className="newevent-link">New Event</Link>
+                        <Link to="/stickyNotes" className="newsticky-link">New Sticky</Link>
                         {auth.token ? (
                             <Link to="/" onClick={handleLogout} className="logout-button">Logout</Link>
                             ) : (
@@ -70,11 +70,11 @@ function NavBar() {
                         <img src={winstackmobile} alt="WinStack Logo" className="navbar-logo" />
                     </Link>
                     <nav className="mobile-nav">
-                        <Link to="/" className="home-link">Home</Link>
-                        <Link to="/users" className="signup-link">Join WinStack</Link>
-                        <Link to="/users" className="register-link">Unregistered</Link>
-                        <Link to="/events" className="createevent-link">Create Event</Link>
-                        <Link to="/stickies" className="createsticky-link">Create Sticky</Link>
+                    <Link to="/" className="home-link">Home</Link>
+                        <Link to="/register" className="signup-link">Signup</Link>
+                        <Link to="/profile" className="profile-link">Profile</Link>
+                        <Link to="/event" className="newevent-link">New Event</Link>
+                        <Link to="/stickyNotes" className="newsticky-link">New Sticky</Link>
                         {auth.token ? (
                             <Link to="/" onClick={handleLogout} className="logout-button">Logout</Link>
                             ) : (
@@ -95,4 +95,4 @@ function NavBar() {
 export default NavBar;
 
 
-// NavBar links: .home-link, .signup-link, .register-link, .createevent-link, .createsticky-link, #login-link,
+// NavBar links: .home-link, .signup-link, .profile-link, .newevent-link, .newsticky-link, #login-link,
