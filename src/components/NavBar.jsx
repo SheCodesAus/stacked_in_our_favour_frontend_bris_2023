@@ -18,18 +18,21 @@ function NavBar() {
     //     setAuth({ token: null });
     // };
     return (
-        <nav class="header">
-            <img id="logo" src={Logo} alt="Logo" />
-            <ul id="navlist">
-                <li>
-                    <Link to="/events">Events</Link>
-                    <Link to="/login">Login</Link>
-                    <Link to="/">Logout</Link>
-                    <Link to="/register">Register</Link>
-                </li>
-            </ul>
-           {/* <Outlet /> */}
-        </nav>
+        <>
+            <nav class="header">
+                <img id="logo" src={Logo} alt="Logo" />
+                <ul id="navlist">
+                    <li>
+                        <Link to="/events">Events</Link>
+                        <Link to="/login">Login</Link>
+                        <Link to="/">Logout</Link>
+                        <Link to="/register">Register</Link>
+                    </li>
+                </ul>
+            </nav>
+            <Outlet />
+        </>
+
     );
 }
 
