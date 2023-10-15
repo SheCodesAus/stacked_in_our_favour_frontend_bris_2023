@@ -21,6 +21,11 @@ Clone the repo down with `git clone insert_quick_setup_link_here`
 
 ## Tips for using Git in a group will be posted on Thinkific shortly. :) 
 
+
+# General
+Note to anyone working on frontend, you will need to install Roboto - in your terminal just run the following line: npm install @fontsource/roboto
+
+
 # Events
 Currently using data from data.js until Backend is good to go. Events and Sticky pages are up and running.
 
