@@ -20,3 +20,19 @@ Clone the repo down with `git clone insert_quick_setup_link_here`
 2. All other group members should pull down this change (`git pull origin main`)
 
 ## Tips for using Git in a group will be posted on Thinkific shortly. :) 
+
+# Events
+Currently using data from data.js until Backend is good to go. Events and Sticky pages are up and running.
+
+Still to do.
+
+Events Page -- component is EventCard
+- change date and time
+- update organiser
+
+Event Sticky Page -- component is StickyNote
+- functionality for create button is required
+- when new sticky notes are added (manually) it just adds to the end of the row and not onto the next, this will need to be updated
+- update commentor
+
+
