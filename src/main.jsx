@@ -10,6 +10,7 @@ import "@fontsource/roboto/400-italic.css"; // Specify weight and style
 
 import HomePage from "./pages/HomePage.jsx";
 import EventsPage from "./pages/EventsPage.jsx";
+import EventStickyPage from "./pages/EventStickyPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
 // import LoginPage from "./pages/LoginPage.jsx"
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <HomePage /> },
       { path: "/events", element: <EventsPage /> },
+      { path: "/event", element: <EventStickyPage /> },
       { path: "/login", element: <LoginPage /> },
       { path: "/register", element: <RegisterPage /> },
       { path: "/", element: <HomePage /> },
