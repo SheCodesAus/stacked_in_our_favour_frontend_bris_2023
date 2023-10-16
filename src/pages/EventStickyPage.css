@@ -1,4 +1,7 @@
 /* styling for sticky notes page */
+event-sticky-page {
+    background-color: plum;
+}
 
 #sticky-list {
     display: grid;

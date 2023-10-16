@@ -20,7 +20,7 @@ function NavBar() {
     return (
         <>
             <nav class="header">
-                <img id="logo" src={Logo} alt="Logo" />
+                <a href="/"><img id="logo" src={Logo} alt="Logo"></img></a>
                 <ul id="navlist">
                     <li>
                         <Link to="/events">Events</Link>

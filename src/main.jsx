@@ -13,8 +13,11 @@ import EventsPage from "./pages/EventsPage.jsx";
 import EventStickyPage from "./pages/EventStickyPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
-// import LoginPage from "./pages/LoginPage.jsx"
 import NavBar from "./components/NavBar.jsx";
+import { AuthProvider } from "./components/AuthProvider.jsx";
+import StickyNoteForm from "./components/StickyNoteForm.jsx";
+
+
 
 const router = createBrowserRouter([
   {
@@ -26,14 +29,17 @@ const router = createBrowserRouter([
       { path: "/login", element: <LoginPage /> },
       { path: "/register", element: <RegisterPage /> },
       { path: "/", element: <HomePage /> },
+      { path: "/stickynoteform", element: <StickyNoteForm /> },
     ]
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <AuthProvider>
     {/* Here we wrap our app in the router provider so they render */}
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 )
 
