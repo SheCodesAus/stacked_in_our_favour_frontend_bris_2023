@@ -25,19 +25,24 @@ Clone the repo down with `git clone insert_quick_setup_link_here`
 # General
 Note to anyone working on frontend, you will need to install Roboto - in your terminal just run the following line: npm install @fontsource/roboto
 
+- .env file is set up but no apis/hooks etc can be used until we get vite URL from backend
 
 # Events
 Currently using data from data.js until Backend is good to go. Events and Sticky pages are up and running.
-
-Still to do.
 
 Events Page -- component is EventCard
 - change date and time
 - update organiser
 
 Event Sticky Page -- component is StickyNote
-- functionality for create button is required
 - when new sticky notes are added (manually) it just adds to the end of the row and not onto the next, this will need to be updated
 - update commentor
+- Sticky note form created
+
+
+## Register and Login
+- Forms and pages have been created
+
+
 
 

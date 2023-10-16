@@ -1,6 +1,7 @@
 import { Link } from"react-router-dom";
 import "./StickyNote.css";
 
+// Sticky Note component
 function StickyNote(props) {
     const { stickyData }= props;
     

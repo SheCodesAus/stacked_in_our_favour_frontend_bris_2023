@@ -1,6 +1,7 @@
 import { Link } from"react-router-dom";
 import "./EventCard.css";
 
+// Event Card component
 function EventCard(props) {
     const { eventData }= props;
     
