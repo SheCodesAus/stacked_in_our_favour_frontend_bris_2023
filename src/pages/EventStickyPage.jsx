@@ -2,6 +2,7 @@ import { oneEventSticky } from "../data";
 import "./EventStickyPage.css"
 import StickyNote from "../components/StickyNote";
 
+// sticky note events page
 function EventStickyPage() {
     return(
         <div>

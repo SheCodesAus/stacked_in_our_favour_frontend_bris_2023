@@ -1,3 +1,5 @@
+// data for temporary
+
 export const allEvents = [
     {
         eventId:1,

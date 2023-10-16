@@ -39,5 +39,6 @@ Event Sticky Page -- component is StickyNote
 - functionality for create button is required
 - when new sticky notes are added (manually) it just adds to the end of the row and not onto the next, this will need to be updated
 - update commentor
+- Do we need a "create" form
 
 

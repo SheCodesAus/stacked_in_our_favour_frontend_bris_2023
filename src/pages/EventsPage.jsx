@@ -2,6 +2,7 @@ import { allEvents } from "../data";
 import EventCard from "../components/EventCard";
 import "./EventsPage.css";
 
+// events page
 function EventsPage() {
     return(
         <div id="event-list">
