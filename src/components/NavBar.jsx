@@ -19,7 +19,7 @@ function NavBar() {
     // };
     return (
         <>
-            <nav class="header">
+            <nav className="header">
                 <a href="/"><img id="logo" src={Logo} alt="Logo"></img></a>
                 <ul id="navlist">
                     <li>
