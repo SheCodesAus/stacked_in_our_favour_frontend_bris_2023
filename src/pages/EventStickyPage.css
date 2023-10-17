@@ -1,0 +1,12 @@
+/* styling for sticky notes page */
+event-sticky-page {
+    background-color: plum;
+}
+
+#sticky-list {
+    display: grid;
+    /* grid-template-columns: 30% 30% 30%; */
+    margin: 20px;
+    column-gap: 50px;
+    row-gap: 50px;
+}

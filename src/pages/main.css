@@ -21,6 +21,20 @@ h3 {
     letter-spacing: 0.4px;
 }
 
+/* added a h4 so we have a dark font variant */
+h4 {
+    font-family: Roboto;
+    font-weight: 300;
+    color: #333333;
+}
+
+h5 {
+    color: #333333;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bold;}
+
 p {
     color: #EDEDED;
     font-family: Roboto;
@@ -30,7 +44,6 @@ p {
     line-height: 150%;
     letter-spacing: 0.28px;
 }
-
 
 .home-block {
     display: inline-flex;

@@ -1,0 +1,78 @@
+// data for temporary
+
+export const allEvents = [
+    {
+        eventId:1,
+        dateCreated:"2020-03-20T14:22:23.382748Z",
+        title:"SheCodes Brisbane: Free 1 Day Coding Workshop for Women",
+        description:"Who Codes? She Codes! Join us for a day of coding fun in a friendly and safe environment at Queensland AI Hub in Brisbane! We offer beginner-level HTML & CSS, and Django & Python workshops, in a self-paced environment, mentored by industry professionals. PLUS we offer lunch, cupcakes and a quick dance break in the afternoon. No experience is necessary - just a laptop, a sense of adventure and a willingness to learn. Our goal is to increase the diversity in the tech community, spark collaboration, creativity, and expand networks - and we can't wait for you to join us on this journey.",
+        location:"Queensland Ai Hub",
+        eventDateTime:"2023-03-20T14:22:23.382748Z",
+        openDate:"2023-01-20T14:22:23.382748Z",
+        closeDate:"2023-02-20T14:22:23.382748Z",
+        creator:1,
+        image:"/src/img/event1.jpeg",
+        is_open:false,
+    },
+    {
+        eventId:2,
+        dateCreated:"2020-03-20T14:22:23.382748Z",
+        title:"She Codes Plus 2023 Program Information Session - Brisbane",
+        description:"She Codes Plus is coming back for 2023! Join us for a free information session to find out how you can supercharge your tech career. This is your exclusive opportunity to find out more about the She Codes Plus program which is kicking off in Brisbane in May 2023, as well as hear tips and tricks to help you with your application. We'll have She Codes Plus Mentor, Alison Killen, available to talk to you about alternative pathways into tech. We will also be joined by a range of She Codes alumni, who now have secured roles as software developers and will be discussing what a day in a life of a developer looks like. This event will explore all the available pathways and opportunities the program can provide, and give you an opportunity to ask questions, soak up some inspiration and get practical advice for taking the next step in your tech career. What is She Codes Plus? The Plus course is an alternate pathway for women to enter tech careers. Plus is a fully-funded, six-month course for women*, offered part-time and outside of working hours. It is a blend of online mentoring (via our Slack community) and in person, weekly, content sessions. Plus will teach from beginner level right through to Junior Developer level over the six months. With a tech stack of HTML/CSS, Python, Django, JavaScript and React, while also teaching how to build and use REST APIs, cloud deployment with Heroku, version control with Git, agile methodologies, and core skills.",
+        location:"Queensland Ai Hub",
+        eventDateTime:"2023-03-20T14:22:23.382748Z",
+        openDate:"2023-01-20T14:22:23.382748Z",
+        closeDate:"2023-02-20T14:22:23.382748Z",
+        creator:1,
+        image:"/src/img/event2.jpeg",
+        is_open:false,
+    },
+];
+
+export const oneEventSticky = {
+    eventId:1,
+    dateCreated:"2020-03-20T14:22:23.382748Z",
+    title:"SheCodes Brisbane: Free 1 Day Coding Workshop for Women",
+    description:"Who Codes? She Codes! Join us for a day of coding fun in a friendly and safe environment at Queensland AI Hub in Brisbane! We offer beginner-level HTML & CSS, and Django & Python workshops, in a self-paced environment, mentored by industry professionals. PLUS we offer lunch, cupcakes and a quick dance break in the afternoon. No experience is necessary - just a laptop, a sense of adventure and a willingness to learn. Our goal is to increase the diversity in the tech community, spark collaboration, creativity, and expand networks - and we can't wait for you to join us on this journey.",
+    location:"Queensland Ai Hub",
+    eventDateTime:"2023-03-20T14:22:23.382748Z",
+    openDate:"2023-01-20T14:22:23.382748Z",
+    closeDate:"2023-02-20T14:22:23.382748Z",
+    creator:1,
+    image:"/src/img/event1.jpeg",
+    is_open:false,
+    sticky: [
+        {
+            noteId:1,
+            dateCreated:"2020-03-20T14:22:23.382748Z",
+            eventId:1,
+            authorId:1,
+            anonymous:false,
+            noteText:"I deployed my website!",
+        }, 
+        {
+            noteId:2,
+            dateCreated:"2020-03-20T14:22:23.382748Z",
+            eventId:1,
+            authorId:1,
+            anonymous:false,
+            noteText:"Sticky notes have been stacked",
+        },
+        {
+            noteId:3,
+            dateCreated:"2020-03-20T14:22:23.382748Z",
+            eventId:1,
+            authorId:1,
+            anonymous:false,
+            noteText:"Events 90% complete",
+        }, 
+        {
+            noteId:4,
+            dateCreated:"2020-03-20T14:22:23.382748Z",
+            eventId:1,
+            authorId:1,
+            anonymous:false,
+            noteText:"Got the grid working (well sorta)!!!",
+        },  
+    ],
+};
