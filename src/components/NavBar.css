@@ -4,36 +4,119 @@ body {
     margin: 0;
 }
 
-.header {
+#nav-bar {
     background: #8246AF;
-    clear: both;
-    height: 54px;
-    padding: 24px 54px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10px;
+    padding-left: 10px;
+
 }
 
-#logo {
-    float: left;
-    margin: 0;
-    height: 50px;
-    width: auto;
+.navbar-logoDesktop {
+    width: 324px;
+    height: auto;
+    border: none;
+    outline: none;
+
 }
 
-#navlist {
+
+/* Nav link styles */
+.login-link, 
+.register-link, 
+.logout-link, 
+.events-link {
     float: right;
     margin-bottom: 0px;
     padding-bottom: 24px;
     padding-top: 10px;
     margin-top: 0px;
-    /* margin: 16px;
-     */
+
 }
 
-li {
+.login-link:hover, 
+.register-link:hover, 
+.logout-link:hover, 
+.events-link:hover {
+    float: right;
+    margin-bottom: 0px;
+    padding-bottom: 24px;
+    padding-top: 10px;
+    margin-top: 0px;
+
+}
+
+
+
+/* Updated styles for desktop view */
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.desktop-nav a {
+    margin-right: 20px;
+}
+
+
+/* Mobile View */
+.menu-icon {
+    order: 1;
+    width: 20px;
+    height: auto;
+    cursor: pointer;
+    margin-right: 10px;
+    color: var(--cream)
+}
+
+.navbar-logoMobile {
+    width: 64px;
+    height: auto;
+    border: none;
+    outline: none;
+
+}
+
+/* Hide the navigation links by default in mobile view */
+#nav-bar.mobile-menu-open .navbar-logo-link,
+#nav-bar.mobile-menu-open nav {
+    display: block;
+}
+
+/* Updated styles for mobile view */
+.mobile-nav {
+    display: none;
+}
+
+.mobile-menu-open .mobile-nav {
+    display: block;
+    text-align: center;
+}
+
+.mobile-nav a {
+    display: block;
+    padding: 10px 0;
+    color: var(--light-purple);
+    text-decoration: none;
+}
+
+.mobile-nav a:hover {
+    background-color: var(--dark-purple);
+    border-radius: 4px;
+}
+
+
+
+
+
+
+/* li {
     display: flex;
     list-style-type: none;
-    /* padding-right: 20px; */
-    /* padding-top: auto;
-    padding-bottom: auto; */
+
 }
 
 
@@ -49,5 +132,4 @@ a {
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
-    /* line-height: 150%; 30px */
-}
+} */
