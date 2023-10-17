@@ -1,0 +1,28 @@
+ul.banner-block {
+    background-color: #8246AF;
+    display: inline-flex;
+    padding: 0;
+    padding-top: 80px;
+    padding-bottom: 50px;
+    text-align: left;
+    float: left;
+    /* width: 33%; */
+    width: 100%;
+    margin: 0;
+    height: 345px;
+
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+.block-item{
+    list-style: none;
+    display: inline-block;
+    margin-inline: auto;
+    text-align: center;
+    width: 244px;
+}
