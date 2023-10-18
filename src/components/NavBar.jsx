@@ -40,7 +40,7 @@ function NavBar() {
             {/* NavBar Desktop View */}
             {!isMobileView && (
                 <div id="nav-bar">
-                    <Link to="/" className="navbar-logo-link">
+                    <Link to="/events" className="navbar-logo-link">
                         <img src={logoDesktop} alt="WinStack Logo" className="navbar-logoDesktop" />
                     </Link>
                     <nav className="desktop-nav">
@@ -66,21 +66,21 @@ function NavBar() {
                     <div className="menu-icon" onClick={toggleMenu}>
                         &#9776;
                     </div>
-                    <Link to="/" className="navbar-logo-link">
+                    <Link to="/events" className="navbar-logo-link">
                         <img src={logoMobile} alt="WinStack Logo" className="navbar-logoMobile" />
                     </Link>
                     <nav className="mobile-nav">
-                    <Link to="/events" className="events-link">
-                            Events
-                        </Link>
-                        <Link to="/register" className="register-link">
-                            Register
+                        <Link to="/" className="logout-link">
+                            Logout
                         </Link>
                         <Link to="/login" className="login-link">
                             Login
                         </Link>
-                        <Link to="/" className="logout-link">
-                            Logout
+                        <Link to="/register" className="register-link">
+                            Register
+                        </Link>
+                    <Link to="/events" className="events-link">
+                            Events
                         </Link>
                     </nav>
                 </div>

@@ -9,28 +9,53 @@
 }
 
 
-html,
-body {
-    height: 100%;
-    margin: 0;
+/* CSS Reset */
+
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: "Roboto", sans-serif;
+    color: var(--teal);
+    scroll-behavior: smooth;
 }
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Roboto", sans-serif;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
 
 #nav-bar {
     background: var(--light-purple);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-right: 10px;
-    padding-left: 10px;
-
-}
-
-.navbar-logoDesktop {
-    width: 324px;
-    height: auto;
-    border: none;
-    outline: none;
-
+    padding-right: 16px;
+    padding-left: 16px;
 }
 
 
@@ -41,10 +66,8 @@ body {
 .events-link {
     float: right;
     margin-bottom: 0px;
-    padding-bottom: 24px;
-    padding-top: 10px;
+    padding: 16px;
     margin-top: 0px;
-
 }
 
 .login-link:hover, 
@@ -53,53 +76,62 @@ body {
 .events-link:hover {
     float: right;
     margin-bottom: 0px;
-    padding-bottom: 24px;
-    padding-top: 10px;
     margin-top: 0px;
 }
 
 
 
 /* Updated styles for desktop view */
-.desktop-nav {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-}
 
-.desktop-nav a {
-    margin-right: 20px;
-    color: var(--white);
-
-}
-
-
-/* Mobile View */
-.menu-icon {
-    order: 1;
-    width: 24px;
-    height: auto;
-    cursor: pointer;
-    margin-right: 8px;
-    color: var(--white)
-}
-
-
-.navbar-logoMobile {
-    width: 64px;
+.navbar-logoDesktop {
+    width: 324px;
     height: auto;
     border: none;
     outline: none;
+    padding-top: 16px;
+    padding: 16px;
+} 
 
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    margin-right: 0px;
 }
 
-/* Hide the navigation links by default in mobile view */
-#nav-bar.mobile-menu-open .navbar-logo-link,
-#nav-bar.mobile-menu-open nav {
-    display: block;
+.desktop-nav a {
+    margin-right: 0px;
+    color: var(--white);
+    text-decoration: none;
 }
 
-/* Updated styles for mobile view */
+.desktop-nav a:hover {
+    background-color: var(--dark-purple);
+    border-radius: 4px;
+}
+
+
+
+/* Mobile View */
+
+.menu-icon {
+    order: 1;
+    font-size: 40px;
+    cursor: pointer;
+    color: var(--white);
+    padding-right: 8px;
+    padding-bottom: 8px;
+}
+
+.navbar-logoMobile {
+    width: 88px;
+    height: auto;
+    border: none;
+    outline: none;
+    padding-top: 16px;
+    padding: 16px;
+}
+
+
 .mobile-nav {
     display: none;
 }
@@ -111,38 +143,20 @@ body {
 
 .mobile-nav a {
     display: block;
-    padding: 10px 0;
+    padding: 8px;
     color: var(--white);
     text-decoration: none;
 }
 
 .mobile-nav a:hover {
-    background-color: var(--med-grey);
+    background-color: var(--dark-purple);
     border-radius: 4px;
 }
 
 
-
-
-
-
-/* li {
-    display: flex;
-    list-style-type: none;
-
+/* Hide the navigation links by default in mobile view */
+#nav-bar.mobile-menu-open .navbar-logo-link,
+#nav-bar.mobile-menu-open nav {
+    display: block;
 }
 
-
-a {
-    color: #ffffff;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    background-color: #8246AF;
-    text-decoration: none;
-    font-family: Roboto;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-} */
