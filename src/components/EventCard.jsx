@@ -1,5 +1,5 @@
 import { Link } from"react-router-dom";
-import "./EventCard.css";
+import "./NavBar.css";
 
 // Event Card component
 function EventCard(props) {
@@ -21,3 +21,4 @@ function EventCard(props) {
     );}
     
 export default EventCard;
+

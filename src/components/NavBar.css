@@ -1,53 +1,289 @@
-html,
-body {
-    height: 100%;
+:root {
+    --orange: #ffa300;
+    --dark-purple: #6300af;
+    --light-purple: #8246af;
+    --dark-grey: #3f3f3f;
+    --med-grey: #5f5f5f;
+    --light-grey: #c6c6c6;
+    --white: #ffffff;
+}
+
+/* CSS Reset */
+
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: "Roboto", sans-serif;
+    color: var(--teal);
+    scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Roboto", sans-serif;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
     margin: 0;
+    padding: 0;
 }
 
-.header {
-    background: #8246AF;
-    clear: both;
-    height: 54px;
-    padding: 24px 54px;
+#nav-bar {
+    background: var(--light-purple);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 16px;
+    padding-left: 16px;
 }
 
-#logo {
-    float: left;
-    margin: 0;
-    height: 50px;
-    width: auto;
-}
-
-#navlist {
+/* Nav link styles */
+.login-link, 
+.register-link, 
+.logout-link, 
+.events-link {
     float: right;
     margin-bottom: 0px;
-    padding-bottom: 24px;
-    padding-top: 10px;
+    padding: 16px;
     margin-top: 0px;
-    /* margin: 16px;
-     */
 }
 
-li {
+.login-link:hover, 
+.register-link:hover, 
+.logout-link:hover, 
+.events-link:hover {
+    float: right;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+
+/* Updated styles for desktop view */
+
+.navbar-logoDesktop {
+    width: 324px;
+    height: auto;
+    border: none;
+    outline: none;
+    padding-top: 16px;
+    padding: 16px;
+} 
+
+.desktop-nav {
     display: flex;
-    list-style-type: none;
-    /* padding-right: 20px; */
-    /* padding-top: auto;
-    padding-bottom: auto; */
+    align-items: center;
+    margin-right: 0px;
 }
 
-
-a {
-    color: #ffffff;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    background-color: #8246AF;
+.desktop-nav a {
+    margin-right: 0px;
+    color: var(--white);
     text-decoration: none;
-    font-family: Roboto;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    /* line-height: 150%; 30px */
 }
+
+.desktop-nav a:hover {
+    background-color: var(--dark-purple);
+    border-radius: 4px;
+}
+
+
+/* Mobile View */
+
+.menu-icon {
+    order: 1;
+    font-size: 40px;
+    cursor: pointer;
+    color: var(--white);
+    padding-right: 8px;
+    padding-bottom: 8px;
+}
+
+.navbar-logoMobile {
+    width: 88px;
+    height: auto;
+    border: none;
+    outline: none;
+    padding-top: 16px;
+    padding: 16px;
+}
+
+.mobile-nav {
+    display: none;
+}
+
+.mobile-menu-open .mobile-nav {
+    display: block;
+    text-align: center;
+}
+
+.mobile-nav a {
+    display: block;
+    padding: 8px;
+    color: var(--white);
+    text-decoration: none;
+}
+
+.mobile-nav a:hover {
+    background-color: var(--dark-purple);
+    border-radius: 4px;
+}
+
+/* Hide the navigation links by default in mobile view */
+#nav-bar.mobile-menu-open .navbar-logo-link,
+#nav-bar.mobile-menu-open nav {
+    display: block;
+}
+
+
+/* EventCard styling */
+/* styling for Event Card on Events Page */
+
+/* .event-card {
+    width: 100%;
+    background-color: #f8f8f8;
+}
+
+.event-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+} */
+
+.event-card {
+    background-color: var(--light-grey);
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: var(--med-grey);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.event-card h2 {
+    margin: 0;
+}
+
+.event-card h4 {
+    margin: 0;
+}
+
+.event-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.event-card h5 {
+    margin: 0;
+    font-weight: bold;
+    color: var(--light-grey);
+}
+
+.event-card h5:first-of-type {
+    margin-top: 16px;
+    }
+
+.event-card h5:last-of-type {
+    margin-bottom: 16px;
+}
+
+.event-card a:hover {
+    background-color: var(--light-purple); 
+}
+
+
+
+
+/* EventCreationPopup.css */
+
+.event-creation-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent grey background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure the popup is above other content */
+}
+
+.event-creation-popup h2 {
+    font-size: 32px;
+    text-align: center;
+    font-weight: bold;
+    margin: 80px 0 8px;
+    color: var(--light-purple);
+    background-color: var(--white);
+    padding: 24px 16px 24px 16px;
+    width: 70%;
+    border: 1px solid var(--light-purple);
+    border-radius: 4px;
+}
+
+.event-creation-popup input,
+.event-creation-popup textarea {
+    width: 70%;
+    padding: 16px;
+    margin: 4px 0;
+    border: 1px solid var(--light-purple);
+    border-radius: 4px;
+    font-size: 16px;
+    color: var(--dark-purple);
+}
+
+.event-creation-popup input[name="title"] {
+    width: 70%;
+    padding: 16px;
+    margin: 4px 0;
+    border: 1px solid var(--light-purple);
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--dark-purple);
+}
+
+.event-creation-popup button {
+    background: var(--dark-purple);
+    color: var(--white);
+    border: 1px solid transparent;;
+    display: flex;
+    padding: 12px 12px;
+    border-radius: 4%;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 8px;
+    transition: border-color 0.2s;
+}
+
+.event-creation-popup button:hover {
+    background: var(--light-purple);
+    border-color: var(--orange)
+}
+
