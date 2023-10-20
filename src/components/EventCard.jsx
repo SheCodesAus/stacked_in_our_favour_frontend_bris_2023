@@ -4,10 +4,12 @@ import "./EventCard.css";
 // Event Card component
 function EventCard(props) {
     const { eventData }= props;
+    const eventLink = `event/${eventData.id}`;
     
     return (
         <div className="event-card">
-            <Link to={"/event"}>
+            {/* <Link to={"/event"}> */}
+            <Link to={eventLink}>
                 <h2>{eventData.title}</h2>
                 <h4>Organised by {eventData.creator}</h4>
                 <img src={eventData.image} />
