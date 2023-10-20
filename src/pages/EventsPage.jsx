@@ -1,13 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import EventCard from '../components/EventCard';
-import EventCreationPopup from '../components/EventCreationPopup'; // Create this component
+import EventCreationPopup from '../components/EventCreationPopup'; 
 import { allEvents } from "../data";
 import "../components/NavBar.css";
 
 function EventsPage() {
     const [events, setEvents] = useState([]);
     const [showPopup, setShowPopup] = useState(false);
-    const [isCreatingEvent, setIsCreatingEvent] = useState(false); // New state for controlling the event creation modal
+    const [isCreatingEvent, setIsCreatingEvent] = useState(false);
+    const [isMobileView, setIsMobileView] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobileView(window.innerWidth < 768);
+        };
+
+        handleResize();
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
 
     const openPopup = () => {
         setShowPopup(true);
@@ -42,7 +58,7 @@ function EventsPage() {
                 <button onClick={openEventCreationModal}>New Event</button>
             </div>
             
-            <div id="event-list">
+            <div id="event-list" className={isMobileView ? "mobile-view" : "desktop-view"}>
                 {allEvents.map((eventData, key) => (
                     <EventCard key={key} eventData={eventData} />
                     ))}

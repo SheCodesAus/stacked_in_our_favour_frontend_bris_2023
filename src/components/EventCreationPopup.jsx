@@ -29,12 +29,19 @@ function EventCreationPopup({ onClose, onEventCreate }) {
 
     return (
         <div className="event-creation-popup">
-            <h2>Create Your Event</h2>
+            <h2>Enter Event Details:</h2>
             <input
                 type="text"
                 name="title"
                 placeholder="Event Title"
                 value={eventData.title}
+                onChange={handleChange}
+            />
+            <input
+                type="text"
+                name="description"
+                placeholder="Event Description"
+                value={eventData.description}
                 onChange={handleChange}
             />
             <input
@@ -58,15 +65,9 @@ function EventCreationPopup({ onClose, onEventCreate }) {
             />
             <input
                 type="text"
-                name="coverImageUrl"
-                placeholder="Cover Image URL"
-                value={eventData.coverImageUrl}
-                onChange={handleChange}
-            />
-            <textarea
-                name="description"
-                placeholder="Event Description"
-                value={eventData.description}
+                name="image"
+                placeholder="Cover Image"
+                value={eventData.image}
                 onChange={handleChange}
             />
             <button onClick={handleCreateEvent}>Create Event</button>
