@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import EventCard from '../components/EventCard';
-import EventCreationPopup from '../components/EventCreationPopup'; 
+import EventCreationForm from '../components/EventCreationForm'; 
 import { allEvents } from "../data";
 import "../components/NavBar.css";
 
@@ -71,7 +71,7 @@ function EventsPage() {
                     ))}
                 {showPopup && (
                     <div className="event-popup">
-                        <EventCreationPopup
+                        <EventCreationForm
                             onClose={closePopup}
                             onEventCreate={handleEventCreation}
                         />
@@ -80,7 +80,7 @@ function EventsPage() {
 
                 {isCreatingEvent && (
                     <div className="event-popup">
-                        <EventCreationPopup
+                        <EventCreationForm
                             onClose={closeEventCreationModal}
                             onEventCreate={handleEventCreation}
                         />
