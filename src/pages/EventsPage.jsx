@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import EventCard from '../components/EventCard';
 import EventCreationPopup from '../components/EventCreationPopup'; // Create this component
 import { allEvents } from "../data";
-import "./EventsPage.css";
+import "../components/NavBar.css";
 
 function EventsPage() {
     const [events, setEvents] = useState([]);
@@ -36,35 +36,41 @@ function EventsPage() {
     };
 
     return (
-        <div id="event-list">
-            {allEvents.map((eventData, key) => (
-                <EventCard key={key} eventData={eventData} />
-            ))}
-            <button onClick={openEventCreationModal}>New Event</button>
-
-            {events
-                .slice()
-                .sort((a, b) => a.title.localeCompare(b.title))
-                .map((eventData, key) => (
+        <div>
+            <div className= "events-page-header">
+                <h1>Events</h1>
+                <button onClick={openEventCreationModal}>New Event</button>
+            </div>
+            
+            <div id="event-list">
+                {allEvents.map((eventData, key) => (
                     <EventCard key={key} eventData={eventData} />
-                ))}
-            {showPopup && (
-                <div className="event-popup">
-                    <EventCreationPopup
-                        onClose={closePopup}
-                        onEventCreate={handleEventCreation}
-                    />
-                </div>
-            )}
+                    ))}
 
-            {isCreatingEvent && (
-                <div className="event-popup">
-                    <EventCreationPopup
-                        onClose={closeEventCreationModal}
-                        onEventCreate={handleEventCreation}
-                    />
-                </div>
-            )}
+                {events
+                    .slice()
+                    .sort((a, b) => a.title.localeCompare(b.title))
+                    .map((eventData, key) => (
+                        <EventCard key={key} eventData={eventData} />
+                    ))}
+                {showPopup && (
+                    <div className="event-popup">
+                        <EventCreationPopup
+                            onClose={closePopup}
+                            onEventCreate={handleEventCreation}
+                        />
+                    </div>
+                )}
+
+                {isCreatingEvent && (
+                    <div className="event-popup">
+                        <EventCreationPopup
+                            onClose={closeEventCreationModal}
+                            onEventCreate={handleEventCreation}
+                        />
+                    </div>
+                )}
+            </div>
         </div>
     );
 }

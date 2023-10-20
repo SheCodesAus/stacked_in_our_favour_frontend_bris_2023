@@ -6,11 +6,12 @@ import "./NavBar.css";
 function EventCreationPopup({ onClose, onEventCreate }) {
     const [eventData, setEventData] = useState({
         title: '',
+        creator: '',
+        image: '',
+        description: '',
+        location: '',
         date: '',
         time: '',
-        location: '',
-        coverImageUrl: '',
-        description: '',
     });
 
     const handleChange = (e) => {
