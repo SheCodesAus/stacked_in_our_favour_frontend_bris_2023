@@ -2,6 +2,7 @@ import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 // import postLogin from "../api/post-login.js";
 // import useAuth from "../hooks/use-auth.js";
+import "./Form.css";
 
 function RegisterForm() {    
     // const navigate = useNavigate();
@@ -39,7 +40,7 @@ function RegisterForm() {
     return (
         <form>
             <h1>Register</h1>
-            <div>
+            <div className="text-field-style">
                 <label htmlFor="email">Email</label>
                         <input 
                             type="email" 
@@ -48,7 +49,7 @@ function RegisterForm() {
                             onChange={handleChange}
                         />       
                 </div>
-                <div>
+                <div className="text-field-style">
                     <label htmlFor="username">Username</label>
                         <input 
                             type="text" 
@@ -57,7 +58,7 @@ function RegisterForm() {
                             onChange={handleChange}
                         />  
                 </div>
-                <div>
+                <div className="text-field-style">
                     <label htmlFor="password">Password</label>
                     <input 
                         type="password" 
@@ -65,7 +66,10 @@ function RegisterForm() {
                         placeholder="Enter password" 
                     />      
                 </div>
-                <button type="submit">Register</button>
+                <div className="button-style">
+                    <button type="submit"><span>Register</span></button>
+                </div>
+                
         </form>
     );
 }

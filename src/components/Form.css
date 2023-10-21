@@ -15,6 +15,11 @@ input {
     padding-top: 16px;
 }
 
+input:hover {
+    background-color:#DFD0EB;
+    transition: 0.5s;
+}
+
 button {
     color: #8246AF;
     display: flex;
