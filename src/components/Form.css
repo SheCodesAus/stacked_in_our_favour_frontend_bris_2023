@@ -1,4 +1,10 @@
+.input-styling {
+    padding: 12px 24px 12px 24px 
+}
 
+.style-a{
+    padding: 12px 24px 12px 24px 
+}
 
 form {
     margin: 20px;
@@ -98,3 +104,4 @@ label {
     font-style: normal;
     font-weight: 500;
 }
+
