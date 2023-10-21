@@ -16,6 +16,7 @@ import RegisterPage from "./pages/RegisterPage.jsx";
 import NavBar from "./components/NavBar.jsx";
 import { AuthProvider } from "./components/AuthProvider.jsx";
 import StickyNoteForm from "./components/StickyNoteForm.jsx";
+import EventCard from "./components/EventCard.jsx";
 
 
 
@@ -26,9 +27,9 @@ const router = createBrowserRouter([
       { path: "/", element: <HomePage /> },
       { path: "/events", element: <EventsPage /> },
       { path: "/event", element: <EventStickyPage /> },
+      { path: "/newevent", element: <EventCard /> },
       { path: "/login", element: <LoginPage /> },
       { path: "/register", element: <RegisterPage /> },
-      { path: "/", element: <HomePage /> },
       { path: "/stickynoteform", element: <StickyNoteForm /> },
     ]
   },
