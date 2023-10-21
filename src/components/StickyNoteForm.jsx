@@ -1,9 +1,11 @@
+import "./Form.css";
+
 function StickyNoteForm() {    
     return (
         // <h1>Sticky form</h1>
         <form>
-            <div>
-                <h1>Create Sticky Note</h1>
+            <h1>Create Sticky Note</h1>
+            <div className="text-field-style">
                 <label htmlFor="noteText">Share your win:</label>
                     <input 
                         type="text" 
@@ -14,9 +16,12 @@ function StickyNoteForm() {
                 <div>
                     <input 
                         type="checkbox" /> 
-                        Would you like to remain anonymously?    
+                        Anonymous    
                 </div>
-                <button type="submit">Create</button>
+                <div className="button-style">
+                <button type="submit"><span>Create</span></button>
+                </div>
+                
         </form>
     );
 }
