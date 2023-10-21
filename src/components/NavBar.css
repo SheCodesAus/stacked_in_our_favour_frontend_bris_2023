@@ -24,6 +24,7 @@ html {
     box-sizing: inherit;
 }
 
+
 p,
 h1,
 h2,
@@ -51,6 +52,7 @@ ul {
 
 
 /* NavBar styles */
+
 
 #nav-bar {
     background: var(--light-purple);
@@ -83,6 +85,29 @@ ul {
 
 
 /* Desktop view */
+
+.login-link, 
+.register-link, 
+.logout-link, 
+.events-link {
+    float: right;
+    margin-bottom: 0px;
+    padding: 16px;
+    margin-top: 0px;
+}
+
+.login-link:hover, 
+.register-link:hover, 
+.logout-link:hover, 
+.events-link:hover {
+    float: right;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+
+
+/* Updated styles for desktop view */
 
 .navbar-logoDesktop {
     width: 324px;
@@ -130,6 +155,7 @@ ul {
     padding-top: 16px;
     padding: 16px;
 }
+
 
 .mobile-nav {
     display: none;
@@ -339,5 +365,19 @@ ul {
 .event-creation-popup button:hover,
 .events-page-header button:hover {
     background: var(--dark-purple);
-    border-color: var(--orange)
+    border-color: var(--orange);
+    text-decoration: none;
 }
+
+.mobile-nav a:hover {
+    background-color: var(--dark-purple);
+    border-radius: 4px;
+}
+
+
+/* Hide the navigation links by default in mobile view */
+#nav-bar.mobile-menu-open .navbar-logo-link,
+#nav-bar.mobile-menu-open nav {
+    display: block;
+}
+
