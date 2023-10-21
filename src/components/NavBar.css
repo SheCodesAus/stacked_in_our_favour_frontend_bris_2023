@@ -8,7 +8,6 @@
     --white: #ffffff;
 }
 
-
 /* CSS Reset */
 
 html {
@@ -25,6 +24,8 @@ html {
     box-sizing: inherit;
 }
 
+
+p,
 h1,
 h2,
 h3,
@@ -46,7 +47,11 @@ ol,
 ul {
     margin: 0;
     padding: 0;
+    font-family: "Roboto", sans-serif;
 }
+
+
+/* NavBar styles */
 
 
 #nav-bar {
@@ -58,8 +63,29 @@ ul {
     padding-left: 16px;
 }
 
-
 /* Nav link styles */
+.login-link, 
+.register-link, 
+.logout-link, 
+.events-link {
+    float: right;
+    margin-bottom: 0px;
+    padding: 16px;
+    margin-top: 0px;
+}
+
+.login-link:hover, 
+.register-link:hover, 
+.logout-link:hover, 
+.events-link:hover {
+    float: right;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+
+/* Desktop view */
+
 .login-link, 
 .register-link, 
 .logout-link, 
@@ -106,9 +132,8 @@ ul {
 
 .desktop-nav a:hover {
     background-color: var(--dark-purple);
-    border-radius: 4px;
+    border-radius: 8px;
 }
-
 
 
 /* Mobile View */
@@ -145,6 +170,202 @@ ul {
     display: block;
     padding: 8px;
     color: var(--white);
+    text-decoration: none;
+}
+
+.mobile-nav a:hover {
+    background-color: var(--dark-purple);
+    border-radius: 8px;
+}
+
+/* Hide the navigation links by default in mobile view */
+#nav-bar.mobile-menu-open .navbar-logo-link,
+#nav-bar.mobile-menu-open nav {
+    display: block;
+}
+
+
+
+/* ALL EventCard styling */
+
+
+
+/* Display three cards in a row on desktop */
+.desktop-view {
+    grid-template-columns: repeat(3, 1fr); 
+}
+
+
+/* Display a single card in a column on mobile */
+.mobile-view {
+    grid-template-columns: 1fr; 
+}
+
+
+
+/* styling for events page */
+#event-list {
+    display: grid;
+    height: 30%;
+    column-gap: 10px;
+    row-gap: 10px;
+    overflow: hidden; /* Add this to hide the image overflow */
+    min-width: 300px;
+}
+
+
+
+
+/* styling for Event Card on Events Page */
+
+
+.events-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.events-page-header button {
+    background: var(--light-purple);
+    color: var(--white);
+    border: 2px solid var(--dark-purple);;
+    display: flex;
+    padding: 12px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 24px;
+    transition: border-color 0.2s;
+}
+
+.events-page-header h1 {
+    margin: 16px;
+    margin-bottom: 0;
+}
+
+
+
+/* Event Card styling */
+
+.event-card {
+    background-color: var(--light-grey);
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: var(--med-grey);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Add this to make cropping easier */
+    overflow: hidden; /* Add this to hide the image overflow */
+    height: 450px;/* Define a fixed height for the event cards */
+    max-width: 400px;
+    min-width: 324px;
+    margin: 16px;
+    margin-bottom: 0;
+}
+
+.event-card img {
+    margin: 4px 8px 4px 8px;
+    width: auto;
+    height: 5%;
+    align-items: center;
+    object-fit: cover;
+}
+
+.event-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.event-card h2 {
+    margin: 4px 8px 4px 8px;
+    color: var(--dark-purple);
+}
+
+.event-card h4 {
+    margin: 4px 8px 4px 8px;
+}
+
+.event-card h5 {
+    margin: 4px 8px 4px 8px;
+    font-weight: bold;
+    color: var(--dark-purple);
+}
+
+.event-card h5:first-of-type {
+    margin: 4px 8px 4px 8px;
+}
+
+.event-card h5:last-of-type {
+    margin: 8px 8px 4px 8px;
+}
+
+.event-card:hover {
+    background-color: var(--orange);
+}
+
+
+
+
+
+/* EventCreationPopup.css */
+
+.event-creation-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent grey background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure the popup is above other content */
+}
+
+.event-creation-popup h2 {
+    font-size: 32px;
+    text-align: center;
+    font-weight: bold;
+    margin: 80px 0 8px;
+    color: var(--white);
+    background-color: var(--dark-purple);
+    padding: 24px 16px 24px 16px;
+    width: 70%;
+    border: 2px solid var(--white);
+    border-radius: 8px;
+}
+
+.event-creation-popup input {
+    width: 70%;
+    padding: 16px;
+    margin: 4px 0;
+    border: 1px solid var(--light-purple);
+    border-radius: 8px;
+    font-size: 16px;
+    color: var(--dark-purple);
+}
+
+.event-creation-popup button {
+    background: var(--light-purple);
+    color: var(--white);
+    border: 2px solid var(--dark-purple);;
+    display: flex;
+    padding: 12px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 8px;
+    transition: border-color 0.2s;
+}
+
+.event-creation-popup button:hover,
+.events-page-header button:hover {
+    background: var(--dark-purple);
+    border-color: var(--orange)
     text-decoration: none;
 }
 
