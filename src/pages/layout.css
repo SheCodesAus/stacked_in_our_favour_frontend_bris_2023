@@ -1,0 +1,63 @@
+/* body {
+    
+}
+
+@media screen and (max-width: 992px) {
+    body {
+        background-color: blue;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        background-color: olive;
+    }
+} */
+
+
+h1{
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 40px;
+    color: #212121;
+}
+
+h2 {
+    font-family: Roboto;
+    font-weight: 300;
+    color: #333333;
+}
+
+h3 {
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 30px */
+    letter-spacing: 0.4px;
+}
+
+/* added a h4 so we have a dark font variant */
+h4 {
+    font-family: Roboto;
+    font-weight: 300;
+    color: #333333;
+}
+
+h5 {
+    color: #333333;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bold;}
+
+p {
+    color: #EDEDED;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: 0.28px;
+}
