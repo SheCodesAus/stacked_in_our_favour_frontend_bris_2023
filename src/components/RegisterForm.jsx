@@ -1,13 +1,15 @@
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import postLogin from "../api/post-login.js";
-// import useAuth from "../hooks/use-auth.js";
+import { Link, useNavigate } from "react-router-dom";
+import postRegister from "../api/postRegister";  // Change this to your registration API function
+import useAuth from "../hooks/use-auth.js";
 
 function RegisterForm() {    
-    // const navigate = useNavigate();
-    // const {auth, setAuth} = useAuth();    
+    const navigate = useNavigate();
+    const {auth, setAuth} = useAuth();    
+    const [errorMessage, setErrorMessage] = useState("");  // State to hold error messages
     
-    const [credentials, setCredentials] = useState({        
+    const [credentials, setCredentials] = useState({  
+        email: "",      
         username: "",        
         password: "",    
     });    
@@ -17,58 +19,67 @@ function RegisterForm() {
         setCredentials((prevCredentials) => ({            
             ...prevCredentials,            
             [id]: value,        
-        }));    
+        }));
+        setErrorMessage("");  // Clear error messages when user types    
     };    
     
-//     const handleSubmit = (event) => {        
-//         event.preventDefault();        
-//         if (credentials.username && credentials.password) {            
-//             postLogin(                
-//                 credentials.username,                
-//                 credentials.password            
-//                 ).then((response) => {                
-//                     window.localStorage.setItem("token", response.token);
-//                     setAuth({                   
-//                         token: response.token,               
-//                     });                
-//                     navigate("/");            
-//                 });        
-//             }    
-//         };
+    const handleSubmit = async (event) => {        
+        event.preventDefault();        
+        if (credentials.email && credentials.username && credentials.password) {            
+            try {
+                const response = await postRegister(                
+                    credentials.email,
+                    credentials.username,                
+                    credentials.password            
+                );
+                window.localStorage.setItem("token", response.token);
+                setAuth({                   
+                    token: response.token,               
+                });                
+                navigate("/");
+            } catch(error) {
+                setErrorMessage(error.message);
+                console.error("Registration error:", error.message);
+            }     
+        }    
+    };
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <div>
                 <h1>Register</h1>
+                {errorMessage && <div className="error-message">{errorMessage}</div>} {/* Display error here */}
                 <label htmlFor="email">Email:</label>
-                        <input 
-                            type="email" 
-                            id="email" 
-                            placeholder="Enter email"
-                            onChange={handleChange}
-                        />       
-                </div>
-                <div>
-                    <label htmlFor="username">Username:</label>
-                        <input 
-                            type="text" 
-                            id="username" 
-                            placeholder="Enter username"
-                            onChange={handleChange}
-                        />  
-                </div>
-                <div>
-                    <label htmlFor="password">Password:</label>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        placeholder="Enter password" 
-                    />      
-                </div>
-                <button type="submit">Register</button>
-                <a href="/login">Login</a>    
+                <input 
+                    type="email" 
+                    id="email" 
+                    placeholder="Enter email"
+                    onChange={handleChange}
+                />       
+            </div>
+            <div>
+                <label htmlFor="username">Username:</label>
+                <input 
+                    type="text" 
+                    id="username" 
+                    placeholder="Enter username"
+                    onChange={handleChange}
+                />  
+            </div>
+            <div>
+                <label htmlFor="password">Password:</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    placeholder="Enter password"
+                    onChange={handleChange}
+                />      
+            </div>
+            <button type="submit">Register</button>
+            <Link to="/login">Login</Link>
         </form>
     );
 }
 
 export default RegisterForm;
+
