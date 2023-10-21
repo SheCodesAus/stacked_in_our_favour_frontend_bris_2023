@@ -3,7 +3,7 @@ async function postEvent(title, description, image) {
     // let date = new Date().toJSON();
     const url = `${import.meta.env.VITE_API_URL}/events/`;
     const token = window.localStorage.getItem("token");
-    console.log("i am post event")
+    // console.log("i am post event")
 
     const response = await fetch(url, {
         method: "POST", // We neeed to tell the server that we are sending JSON data so we set the COntent Type header to application/json

@@ -4,7 +4,7 @@ import "./EventCard.css";
 // Event Card component
 function EventCard(props) {
     const { eventData }= props;
-    const eventLink = `event/${eventData.id}`;
+    const eventLink = `${eventData.id}`;
     
     return (
         <div className="event-card">

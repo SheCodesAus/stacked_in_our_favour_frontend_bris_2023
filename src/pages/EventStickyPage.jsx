@@ -4,13 +4,14 @@ import useEvent from "../hooks/use-event";
 
 import "./EventStickyPage.css"
 import StickyNote from "../components/StickyNote";
-import StickyNoteForm from "../components/StickyNoteForm";
+// import StickyNoteForm from "../components/StickyNoteForm";
 
 // sticky note events page
 function EventStickyPage() {
     const { id } = useParams();
     const { event, isLoading, error } = useEvent(id);
-
+    window.localStorage.setItem('currentEventId', id);
+  
     if (isLoading) {
         return <p>loading...</p>
     }
@@ -31,10 +32,10 @@ function EventStickyPage() {
             <h1>{event.title}</h1>
             <h4>{event.dateCreated}</h4>
             {/* <h4>{`Status: ${oneEventSticky.is_open}`}</h4> */}
-            <a href="/stickynoteform">+ Create Sticky Note</a>    
+            <a href="/sticky-notes">+ Create Sticky Note</a>    
             <h2>Wins:</h2>
             <li>
-                {event.sticky.map((stickyData, key) => {
+                {event.stickyNotes.map((stickyData, key) => {
                     return (
                         <div id="sticky-list">
                             <StickyNote stickyData={stickyData} />

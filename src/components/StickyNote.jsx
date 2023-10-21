@@ -8,7 +8,7 @@ function StickyNote(props) {
     return (
         <div className="sticky-note">
             <h2>{stickyData.noteText}</h2>
-            <h2>By {stickyData.authorId}</h2>    
+            <h2>By {stickyData.authorID}</h2>    
         </div>  
     );}
     

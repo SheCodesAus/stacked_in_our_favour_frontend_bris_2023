@@ -9,6 +9,8 @@ function EventsPage() {
 
     return(
         <div id="event-list">
+            <a href="/eventcard">+ Create Event</a>    
+
             {/* {allEvents.map((eventData, key) => { */}
             {events.map((eventData, key) => {
                 return <EventCard key={key} eventData={eventData} />;

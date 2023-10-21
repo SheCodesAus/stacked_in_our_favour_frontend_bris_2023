@@ -2,19 +2,17 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import postSticky from "../api/post-sticky";
-import useAuth from "../hooks/use-auth.js";
+// import useAuth from "../hooks/use-auth.js";
 
 function StickyNoteForm () {
     const navigate = useNavigate();
+    const currentEventId = window.localStorage.getItem('currentEventId');
     // const {auth, setAuth} = useAuth();
 
     //we are not passing is open and date, because user should not control them unless they have permissons
     const [stickyDetails, setStickyDetails] = useState ({
-        "authorId": authorId,
-        "comment": comment,
-        // image: "image",
-        //true: "is_open",
-        //date: "date_created",
+        "noteText": "",
+        "anonymous": false
     });
 
     const handleChange = (event) => {
@@ -27,13 +25,14 @@ function StickyNoteForm () {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("create button pressed")
+        // console.log("create button pressed")
             postSticky(
-                sticky.authorId,
-                stickyDetails.comment,
+                stickyDetails.noteText,
+                stickyDetails.anonymous,
+                currentEventId
             ).then((response) => {
-    console.log("RESPONSE FROM POST REQ: ", response)
-              //  navigate("/");
+    // console.log("RESPONSE FROM POST REQ: ", response)
+            navigate(`/events/${currentEventId}`);
             });
     };
 
@@ -49,6 +48,7 @@ function StickyNoteForm () {
                         type="text" 
                         id="noteText" 
                         placeholder="Share your win in 50 characters or less"
+                        onChange={handleChange}
                     />      
                 </div>
                 <div>
@@ -56,7 +56,7 @@ function StickyNoteForm () {
                         type="checkbox" /> 
                         Would you like to remain anonymously?    
                 </div>
-                <button type="submit">Create</button>
+                <button type="submit" onClick={handleSubmit} >Create</button>
         </form>
     );
 }

@@ -1,26 +1,25 @@
-async function postSticky(noteText, anonymous, eventId) {
+async function postLogin(username, password) {
     // is this getting the right date?
     // let date = new Date().toJSON();
-    const url = `${import.meta.env.VITE_API_URL}/sticky-notes/`;
-    const token = window.localStorage.getItem("token");
+    const url = `${import.meta.env.VITE_API_URL}/login/`;
+    // const token = window.localStorage.getItem("token")
 
     const response = await fetch(url, {
         method: "POST", // We neeed to tell the server that we are sending JSON data so we set the COntent Type header to application/json
         headers: {
             "Content-Type": "application/json",
             // authentication/authorization
-            "Authorization": `Token ${token}`,
+            // "Authorization": `Token ${token}`,
         },
         body: JSON.stringify({
-            "noteText": noteText,
-            "authorID": "testuser",
-            "anonymous": anonymous,
-            "eventId": eventId
+            "username": username,
+            "password": password,
         }),
     });
 
     if (!response.ok) { // error handling
-        const fallbackError = `Error trying to post sticky`;
+        const fallbackError = `Error trying to login`;
+        console.log(fallbackError)
 
         const data = await response.json().catch(() => {
             throw new Error(fallbackError);
@@ -33,4 +32,4 @@ async function postSticky(noteText, anonymous, eventId) {
     return await response.json();
 }
 
-export default postSticky;
+export default postLogin;
