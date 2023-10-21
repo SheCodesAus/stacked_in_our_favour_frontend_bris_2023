@@ -21,24 +21,33 @@ function LoginForm() {
         }));    
     };    
     
-    const handleSubmit = async (event) => {        
+    const handleSubmit = (event) => {        
         event.preventDefault();        
         if (credentials.username && credentials.password) {            
-            try {
-                const response = await postLogin(credentials.username, credentials.password);
-                window.localStorage.setItem("token", response.token);
-                setAuth({ token: response.token });
-                navigate("/");
-            } catch (error) {
-                console.error("Login error:", error.message);
-            }
-        }    
-    };
+            postLogin(                
+                credentials.username,                
+                credentials.password            
+                ).then((response) => {                
+                    window.localStorage.setItem("token", response.token);
+                    setAuth({                   
+                        token: response.token,               
+                    });                
+                    navigate("/");            
+                });        
+            }    
+        };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <h1>Login</h1>     
+        <form>
+            <h1>Login</h1>
+            <div className="text-field-style">
+                {/* <label htmlFor="email" className="row">Email</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            placeholder="Enter email"
+                            onChange={handleChange}
+                        />        */}
                 </div>
                 <div>
                     <label htmlFor="username">Username:</label>
@@ -55,10 +64,12 @@ function LoginForm() {
                         type="password" 
                         id="password" 
                         placeholder="Enter password" 
+                        onChange={handleChange}
                     />      
                 </div>
-                <button type="submit">Login</button>
-                <a href="/register">Register</a>    
+                <div className="button-style">
+                <button type="submit" onClick={handleSubmit}><span>Login</span></button>  
+                </div>
         </form>
     );
 }
