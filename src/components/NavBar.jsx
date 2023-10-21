@@ -11,7 +11,9 @@ import "@fontsource/roboto/400.css"; // Specify weight
 import "@fontsource/roboto/400-italic.css"; // Specify weight and style
 
 
+
 function NavBar() {
+
 
     const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768);
 
@@ -96,6 +98,7 @@ export default NavBar;
 
 
 
+
 //     return (
 //         <>
 //             <nav className="header">
@@ -115,4 +118,6 @@ export default NavBar;
 //     );
 // }
 
+
 // export default NavBar;
+
