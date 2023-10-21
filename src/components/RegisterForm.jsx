@@ -38,9 +38,9 @@ function RegisterForm() {
 
     return (
         <form>
+            <h1>Register</h1>
             <div>
-                <h1>Register</h1>
-                <label htmlFor="email">Email:</label>
+                <label htmlFor="email">Email</label>
                         <input 
                             type="email" 
                             id="email" 
@@ -49,7 +49,7 @@ function RegisterForm() {
                         />       
                 </div>
                 <div>
-                    <label htmlFor="username">Username:</label>
+                    <label htmlFor="username">Username</label>
                         <input 
                             type="text" 
                             id="username" 
@@ -58,7 +58,7 @@ function RegisterForm() {
                         />  
                 </div>
                 <div>
-                    <label htmlFor="password">Password:</label>
+                    <label htmlFor="password">Password</label>
                     <input 
                         type="password" 
                         id="password" 
@@ -66,7 +66,6 @@ function RegisterForm() {
                     />      
                 </div>
                 <button type="submit">Register</button>
-                <a href="/login">Login</a>    
         </form>
     );
 }
