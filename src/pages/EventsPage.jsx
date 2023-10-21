@@ -55,7 +55,7 @@ function EventsPage() {
         <div>
             <div className= "events-page-header">
                 <h1>Events</h1>
-                <button onClick={openEventCreationModal}>New Event</button>
+                <button onClick={openEventCreationModal}>Create Event</button>
             </div>
             
             <div id="event-list" className={isMobileView ? "mobile-view" : "desktop-view"}>
