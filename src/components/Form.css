@@ -1,0 +1,100 @@
+
+
+form {
+    margin: 20px;
+    width: 40%;
+}
+
+
+input {
+    border-style: none;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 2px solid #8246AF;
+    padding-top: 16px;
+}
+
+input:hover {
+    background-color:#DFD0EB;
+    transition: 0.5s;
+}
+
+button {
+    color: #8246AF;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    border: 2px solid #8246AF;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    background: #F5F5F5;
+    padding: 10px 24px;
+}
+
+/* button:hover {
+    background-color: #DFD0EB;
+    font-weight: 700;
+
+} */
+
+button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+button span:after {
+    content: "\270D";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+button:hover span {
+    padding-right: 25px;
+    transition: 0.5s;
+}
+
+button:hover {
+    background-color:#DFD0EB;
+    font-weight: 700;
+}
+
+button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.row {
+    padding-top: 2%;
+    width: 100%;
+}
+
+.button-style {
+    padding: 24px;
+}
+
+.text-field-style {
+    padding: 12px 24px 12px 24px;
+    box-sizing: border-box;
+}
+
+h1 {
+    padding: 12px 24px 12px 24px;
+    margin: 0;
+}
+
+label {
+    color: #8246AF;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+}

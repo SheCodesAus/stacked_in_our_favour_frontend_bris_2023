@@ -2,6 +2,7 @@ import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 // import postLogin from "../api/post-login.js";
 // import useAuth from "../hooks/use-auth.js";
+import "./Form.css";
 
 function RegisterForm() {    
     // const navigate = useNavigate();
@@ -38,9 +39,9 @@ function RegisterForm() {
 
     return (
         <form>
-            <div>
-                <h1>Register</h1>
-                <label htmlFor="email">Email:</label>
+            <h1>Register</h1>
+            <div className="text-field-style">
+                <label htmlFor="email">Email</label>
                         <input 
                             type="email" 
                             id="email" 
@@ -48,8 +49,8 @@ function RegisterForm() {
                             onChange={handleChange}
                         />       
                 </div>
-                <div>
-                    <label htmlFor="username">Username:</label>
+                <div className="text-field-style">
+                    <label htmlFor="username">Username</label>
                         <input 
                             type="text" 
                             id="username" 
@@ -57,16 +58,18 @@ function RegisterForm() {
                             onChange={handleChange}
                         />  
                 </div>
-                <div>
-                    <label htmlFor="password">Password:</label>
+                <div className="text-field-style">
+                    <label htmlFor="password">Password</label>
                     <input 
                         type="password" 
                         id="password" 
                         placeholder="Enter password" 
                     />      
                 </div>
-                <button type="submit">Register</button>
-                <a href="/login">Login</a>    
+                <div className="button-style">
+                    <button type="submit"><span>Register</span></button>
+                </div>
+                
         </form>
     );
 }
