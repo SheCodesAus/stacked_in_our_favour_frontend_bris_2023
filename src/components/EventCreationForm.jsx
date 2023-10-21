@@ -5,13 +5,13 @@ import "./NavBar.css";
 
 function EventCreationForm({ onClose, onEventCreate }) {
     const [eventData, setEventData] = useState({
-        title: '',
-        creator: '',
-        image: '',
-        description: '',
-        location: '',
-        date: '',
-        time: '',
+        title: "",
+        creator: "",
+        image: "",
+        description: "",
+        location: "",
+        date: "",
+        time: "",
     });
 
     const handleChange = (e) => {
