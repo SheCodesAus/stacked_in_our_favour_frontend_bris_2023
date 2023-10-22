@@ -24,6 +24,7 @@ async function postLogin(username, password) {
             throw new Error(fallbackError);
         });
 
+<<<<<<< HEAD
         if (data.detail === "Invalid login credentials") {
             throw new Error("Invalid login credentials");
         } else if (data.detail === "User not found") {
@@ -31,6 +32,11 @@ async function postLogin(username, password) {
         } else {
             throw new Error(fallbackError);
         }    }
+=======
+        const errorMessage = data?.detail ?? fallbackError;
+        throw new Error(errorMessage);
+    }
+>>>>>>> 98a2bcb69a6f14b2fc5f2fddc115b8ce68da67f0
 
     return await response.json();
 }
