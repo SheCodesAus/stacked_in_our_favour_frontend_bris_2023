@@ -42,7 +42,7 @@ function EventCard(props) {
                 <h4>Finish: {formatDateTime(eventData.closeDate)}</h4>          
             </Link>    
         </div>  
-    );}
+    );}   
     
 export default EventCard;
 

@@ -12,6 +12,7 @@ function LoginForm() {
         username: "",
         password: "",
     });
+    const [errorMessage, setErrorMessage] = useState("");  // State for the error message
 
     const handleChange = (event) => {
         const { id, value } = event.target;
@@ -19,6 +20,7 @@ function LoginForm() {
             ...prevCredentials,
             [id]: value,
         }));
+        setErrorMessage("");  // Clear error messages when user types
     };
 
     const handleSubmit = (event) => {
@@ -32,7 +34,9 @@ function LoginForm() {
                 setAuth({
                     token: response.token,
                 });
-                navigate("/");
+                navigate("/events");
+            }).catch((error) => {
+                setErrorMessage(error.message);  // Set the error message
             });
         }
     };
@@ -40,6 +44,7 @@ function LoginForm() {
     return (
         <form>
             <h1>Login</h1>
+            {errorMessage && <div className="error-message">{errorMessage}</div>}  {/* Display the error message */}
             <div className="input-styling">
                 <label htmlFor="username">Username</label>
                 <input

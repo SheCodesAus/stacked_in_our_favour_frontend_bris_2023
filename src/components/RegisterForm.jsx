@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import postRegister from "../api/postRegister";  // Change this to your registration API function
-import useAuth from "../hooks/use-auth.js";
+import postRegister from "../api/postRegister";
+import useAuth from "../hooks/use-auth";
 import "./Form.css";
 
 function RegisterForm() {
     const navigate = useNavigate();
     const { auth, setAuth } = useAuth();
-    const [errorMessage, setErrorMessage] = useState("");  // State to hold error messages
+    const [errorMessage, setErrorMessage] = useState("");
 
     const [credentials, setCredentials] = useState({
         email: "",
@@ -21,7 +21,7 @@ function RegisterForm() {
             ...prevCredentials,
             [id]: value,
         }));
-        setErrorMessage("");  // Clear error messages when user types    
+        setErrorMessage("");
     };
 
     const handleSubmit = async (event) => {
@@ -37,7 +37,7 @@ function RegisterForm() {
                 setAuth({
                     token: response.token,
                 });
-                navigate("/");
+                navigate("/events");
             } catch (error) {
                 setErrorMessage(error.message);
                 console.error("Registration error:", error.message);
@@ -48,6 +48,15 @@ function RegisterForm() {
     return (
         <form onSubmit={handleSubmit}>
             <h1>Register</h1>
+            <div className="input-styling">
+                <label htmlFor="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter email"
+                    onChange={handleChange}
+                />
+            </div>
             <div className="input-styling">
                 <label htmlFor="username">Username</label>
                 <input
@@ -63,8 +72,10 @@ function RegisterForm() {
                     type="password"
                     id="password"
                     placeholder="Enter password"
+                    onChange={handleChange}
                 />
             </div>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
             <div className="input-styling">
                 <button type="submit"><span>Register</span></button>
             </div>
@@ -74,4 +85,3 @@ function RegisterForm() {
 }
 
 export default RegisterForm;
-
