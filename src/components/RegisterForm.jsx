@@ -1,72 +1,85 @@
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import postLogin from "../api/post-login.js";
-// import useAuth from "../hooks/use-auth.js";
+import { Link, useNavigate } from "react-router-dom";
+import postRegister from "../api/postRegister";
+import useAuth from "../hooks/use-auth";
+import "./Form.css";
 
-function RegisterForm() {    
-    // const navigate = useNavigate();
-    // const {auth, setAuth} = useAuth();    
-    
-    const [credentials, setCredentials] = useState({        
-        username: "",        
-        password: "",    
-    });    
-    
-    const handleChange = (event) => {        
-        const { id, value } = event.target;        
-        setCredentials((prevCredentials) => ({            
-            ...prevCredentials,            
-            [id]: value,        
-        }));    
-    };    
-    
-//     const handleSubmit = (event) => {        
-//         event.preventDefault();        
-//         if (credentials.username && credentials.password) {            
-//             postLogin(                
-//                 credentials.username,                
-//                 credentials.password            
-//                 ).then((response) => {                
-//                     window.localStorage.setItem("token", response.token);
-//                     setAuth({                   
-//                         token: response.token,               
-//                     });                
-//                     navigate("/");            
-//                 });        
-//             }    
-//         };
+function RegisterForm() {
+    const navigate = useNavigate();
+    const { auth, setAuth } = useAuth();
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const [credentials, setCredentials] = useState({
+        email: "",
+        username: "",
+        password: "",
+    });
+
+    const handleChange = (event) => {
+        const { id, value } = event.target;
+        setCredentials((prevCredentials) => ({
+            ...prevCredentials,
+            [id]: value,
+        }));
+        setErrorMessage("");
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        if (credentials.email && credentials.username && credentials.password) {
+            try {
+                const response = await postRegister(
+                    credentials.email,
+                    credentials.username,
+                    credentials.password
+                );
+                window.localStorage.setItem("token", response.token);
+                setAuth({
+                    token: response.token,
+                });
+                navigate("/events");
+            } catch (error) {
+                setErrorMessage(error.message);
+                console.error("Registration error:", error.message);
+            }
+        }
+    };
 
     return (
-        <form>
-            <div>
-                <h1>Register</h1>
-                <label htmlFor="email">Email:</label>
-                        <input 
-                            type="email" 
-                            id="email" 
-                            placeholder="Enter email"
-                            onChange={handleChange}
-                        />       
-                </div>
-                <div>
-                    <label htmlFor="username">Username:</label>
-                        <input 
-                            type="text" 
-                            id="username" 
-                            placeholder="Enter username"
-                            onChange={handleChange}
-                        />  
-                </div>
-                <div>
-                    <label htmlFor="password">Password:</label>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        placeholder="Enter password" 
-                    />      
-                </div>
-                <button type="submit">Register</button>
-                <a href="/login">Login</a>    
+        <form onSubmit={handleSubmit}>
+            <h1>Register</h1>
+            <div className="input-styling">
+                <label htmlFor="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter email"
+                    onChange={handleChange}
+                />
+            </div>
+            <div className="input-styling">
+                <label htmlFor="username">Username</label>
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter username"
+                    onChange={handleChange}
+                />
+            </div>
+            <div className="input-styling">
+                <label htmlFor="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter password"
+                    onChange={handleChange}
+                />
+            </div>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            <div className="input-styling">
+                <button type="submit"><span>Register</span></button>
+            </div>
+            <a href="/login" className="style-a">Login</a>
         </form>
     );
 }

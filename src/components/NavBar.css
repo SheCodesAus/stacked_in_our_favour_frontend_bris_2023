@@ -365,7 +365,7 @@ ul {
 .event-creation-popup button:hover,
 .events-page-header button:hover {
     background: var(--dark-purple);
-    border-color: var(--orange);
+    border-color: var(--orange)
     text-decoration: none;
 }
 

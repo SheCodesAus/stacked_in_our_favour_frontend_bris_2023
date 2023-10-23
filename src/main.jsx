@@ -26,11 +26,13 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <HomePage /> },
       { path: "/events", element: <EventsPage /> },
-      { path: "/event", element: <EventStickyPage /> },
-      { path: "/newevent", element: <EventCard /> },
+      // { path: "/event", element: <EventStickyPage /> },
+      { path: "/events/:id", element: <EventStickyPage /> },
       { path: "/login", element: <LoginPage /> },
       { path: "/register", element: <RegisterPage /> },
-      { path: "/stickynoteform", element: <StickyNoteForm /> },
+      { path: "/", element: <HomePage /> },
+      { path: "/sticky-notes", element: <StickyNoteForm /> },
+      { path: "/newevent", element: <EventCard /> },
     ]
   },
 ]);
