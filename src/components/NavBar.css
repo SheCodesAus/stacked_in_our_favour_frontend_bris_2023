@@ -136,7 +136,7 @@ ul {
 }
 
 
-/* Mobile View */
+/* Mobile View < 768 */
 
 .menu-icon {
     order: 1;
@@ -387,6 +387,43 @@ ul {
 /* All Home Page logout styling */
 
 
+
+
+/* mobile view */
+
+.banner-block-mobile {
+    display: auto;
+    padding: 0;
+    padding-top: 80px;
+    padding-bottom: 50px;
+    text-align: left;
+    float: left;
+    width: 100%;
+    margin: 0;
+    max-height: 250px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    flex-direction: column; /* Change to vertical layout */
+}
+
+
+.banner-block.mobile-view {
+    flex-direction: column; 
+    align-items: center; 
+    display: auto;
+}
+
+
+/* desktop view */
+.banner-block.desktop-view {
+    flex-direction: row; 
+    justify-content: space-between; 
+}
+
+
 ul.banner-block {
     background-color: var(--light-purple);
     display: inline-flex;
@@ -422,23 +459,6 @@ ul.banner-block {
     z-index: 1000;
 }
 
-.banner-block-mobile {
-    display: inline-flex;
-    padding: 0;
-    padding-top: 80px;
-    padding-bottom: 50px;
-    text-align: left;
-    float: left;
-    width: 100%;
-    margin: 0;
-    max-height: 250px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    flex-direction: column; /* Change to vertical layout */
-}
 
 .block-item {
     list-style: none;
@@ -457,6 +477,21 @@ ul.banner-block {
 
 
 /* Home Block styles */
+
+/* Add a media query for screens with a maximum width of 768px */
+@media screen and (max-width: 768px) {
+    .home-block-text {
+        width: 100%; 
+        margin: 0; 
+    }
+    
+    .home-block-text h1 {
+        font-size: 24px;
+    }
+
+    .home-block-text h2 {
+        margin-top: 16px;} 
+}
 
 
 
@@ -523,6 +558,7 @@ ul.banner-block {
     margin: 0;
 }
 
+
 .home-block-image {
     width: 65%;
     margin: auto;
@@ -532,14 +568,25 @@ ul.banner-block {
 }
 
 
-/* mobile view */
-.banner-block.mobile-view {
-    flex-direction: column; 
-    align-items: center; 
+/* CSS to shrink the image */
+.shrink-image {
+    max-width: 100%; 
+    opacity: 1; 
+    transition: max-width 0.2s, opacity 0.2s; 
 }
 
-/* desktop view */
-.banner-block.desktop-view {
-    flex-direction: row; 
-    justify-content: space-between; 
+/* Add CSS for making the image disappear on screens smaller than 768px */
+@media screen and (max-width: 768px) {
+    .home-block-image {
+        display: none;
+    }
+
+    .home-block {
+        display: flex;
+        padding: 0;
+        width: 200%;
+        height: 100%;
+    }
 }
+
+
