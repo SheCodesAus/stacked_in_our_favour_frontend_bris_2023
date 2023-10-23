@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";  // added useEffect
 import { Link, useNavigate } from "react-router-dom";
 import postRegister from "../api/postRegister";
 import useAuth from "../hooks/use-auth";
@@ -13,6 +13,7 @@ function RegisterForm() {
         email: "",
         username: "",
         password: "",
+        role: "Attendee"  // default role is 'Attendee'
     });
 
     const handleChange = (event) => {
@@ -21,18 +22,33 @@ function RegisterForm() {
             ...prevCredentials,
             [id]: value,
         }));
-        setErrorMessage("");
+    };
+
+    const handleCheckboxChange = (event) => {
+        const selectedRole = event.target.checked ? 'Organiser' : 'Attendee';
+        setCredentials((prevCredentials) => ({
+            ...prevCredentials,
+            role: selectedRole,
+        }));
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (credentials.email && credentials.username && credentials.password) {
+
+        // Use the credentials directly from the state
+        const { email, username, password, role } = credentials;
+        console.log("Credentials before submitting:", { email, username, password, role });
+
+        if (email && username && password) {
             try {
                 const response = await postRegister(
-                    credentials.email,
-                    credentials.username,
-                    credentials.password
+                    email,
+                    username,
+                    password,
+                    role
                 );
+                console.log("Registration response:", response);
+
                 window.localStorage.setItem("token", response.token);
                 setAuth({
                     token: response.token,
@@ -42,8 +58,15 @@ function RegisterForm() {
                 setErrorMessage(error.message);
                 console.error("Registration error:", error.message);
             }
+        } else {
+            console.log("Form fields validation failed");
+            setErrorMessage("Please fill in all the fields.");
         }
     };
+
+    useEffect(() => {
+        console.log(credentials);
+    }, [credentials]);
 
     return (
         <form onSubmit={handleSubmit}>
@@ -75,6 +98,22 @@ function RegisterForm() {
                     onChange={handleChange}
                 />
             </div>
+            <table>
+            <tbody>
+                <tr>
+                    <td style={{verticalAlign: 'middle'}}>
+                        <label htmlFor="role">Are you an Organiser?</label>
+                         </td>
+                     <td style={{verticalAlign: 'middle'}}>
+                        <input
+                    type="checkbox"
+                    id="role"
+                    onChange={handleCheckboxChange}
+                />
+            </td>
+        </tr>
+    </tbody>
+</table>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             <div className="input-styling">
                 <button type="submit"><span>Register</span></button>

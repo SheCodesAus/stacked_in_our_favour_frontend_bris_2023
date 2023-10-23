@@ -1,6 +1,8 @@
-async function postRegister(email, username, password) {
+async function postRegister(email, username, password, role) {
     const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-    const url = `${baseUrl}/register/`;  // Assuming '/register/' is your registration endpoint in Django
+    const url = `${baseUrl}/register/`;
+
+    console.log("postRegister called with:", email, username, password, role);
 
     let response;
     try {
@@ -13,9 +15,11 @@ async function postRegister(email, username, password) {
                 "email": email,
                 "username": username,
                 "password": password,
+                "role": role
             }),
         });
     } catch (error) {
+        console.error("Network error:", error);
         throw new Error("Network error occurred while trying to register.");
     }
 
@@ -23,6 +27,7 @@ async function postRegister(email, username, password) {
         const fallbackError = "Error trying to register";
 
         const data = await response.json().catch(() => {
+            console.error("Error parsing JSON response");
             throw new Error(fallbackError);
         });
 
@@ -41,10 +46,13 @@ async function postRegister(email, username, password) {
 
         const errorMessageArray = Object.values(errorMessages);
         const errorMessage = errorMessageArray.join(", ") || fallbackError;
+        console.error("Server response error:", errorMessage);
         throw new Error(errorMessage); 
     }
 
-    return await response.json();
+    const responseData = await response.json();
+    console.log("Server response data:", responseData);
+    return responseData;
 }
 
 export default postRegister;
