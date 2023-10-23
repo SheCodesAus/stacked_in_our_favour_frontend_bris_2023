@@ -1,9 +1,9 @@
 .input-styling {
-    padding: 12px 24px 12px 24px 
+    padding: 12px 24px 12px 24px;
 }
 
-.style-a{
-    padding: 12px 24px 12px 24px 
+.style-a {
+    padding: 12px 24px 12px 24px;
 }
 
 form {
@@ -11,40 +11,48 @@ form {
     width: 40%;
 }
 
-
 input {
     border-style: none;
     display: block;
     width: 100%;
     box-sizing: border-box;
-    border-bottom: 2px solid #8246AF;
+    border-bottom: 2px solid var(--light-purple);
     padding-top: 16px;
 }
 
 input:hover {
-    background-color:#DFD0EB;
+    background-color: var(--pale-purple);
     transition: 0.5s;
 }
 
-button {
-    color: #8246AF;
-    display: flex;
+button, .item-2{
+    color: var(--light-purple);
+    display: inline-flex;
     width: 100%;
     justify-content: center;
     align-items: center;
     border-radius: 16px;
-    border: 2px solid #8246AF;
+    border: 2px solid var(--light-purple);
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
-    background: #F5F5F5;
-    padding: 10px 24px;
+    background: var(--page-grey);
+    padding: 12px 24px;
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+
+.item-1 {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-style: normal;
 }
 
 /* button:hover {
     background-color: #DFD0EB;
     font-weight: 700;
-
 } */
 
 button span {
@@ -69,7 +77,7 @@ button:hover span {
 }
 
 button:hover {
-    background-color:#DFD0EB;
+    background-color: var(--pale-purple);
     font-weight: 700;
 }
 
@@ -98,7 +106,7 @@ h1 {
 }
 
 label {
-    color: #8246AF;
+    color: var(--light-purple);
     font-family: Roboto;
     font-size: 16px;
     font-style: normal;
@@ -106,9 +114,14 @@ label {
 }
 
 .error-message {
-    color: #8246AF;              
-    font-weight: bold;        
-    margin-top: 10px;         
-    font-size: 1.1rem;        
-    text-align: center;       
+    color: var(--light-purple);
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 1.1rem;
+    text-align: center;
 }
+
+
+
+
+

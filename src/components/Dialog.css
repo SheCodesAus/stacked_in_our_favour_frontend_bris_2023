@@ -5,6 +5,15 @@
     width: 40%;
 }
 
+@media screen and (max-width: 768px) {
+    .dialog {
+        background-color: #FFFFFF;
+        padding: 40px;
+        border-radius: 16px;
+        width: 60%;
+    }
+}
+
 .row-1 {
     display: flex;
 }
@@ -23,6 +32,47 @@
     align-items: center;
     z-index: 1000; /* Ensure the popup is above other content */
 }
+
+/* Events Page Styles */
+.create-event-container {
+    display: flex;
+    align-items: center;
+}
+
+.button-container {
+    display: inline-flex;
+    justify-content: flex-end; 
+    margin-top: 24px; 
+}
+
+.create-event-button {
+    width: 150px;
+    background: var(--light-purple);
+    color: var(--white);
+    border: 2px solid var(--dark-purple);
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 24px; 
+    transition: border-color 0.2s;
+}
+
+.cancel-button {
+    width: 150px;
+    background: var(--pale-purple);
+    color: var(--dark-grey);
+    border: 2px solid var(--dark-purple);
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 24px; 
+    transition: border-color 0.2s;
+}
+
+
+
 
 /* .event-creation-popup h2 {
     font-size: 32px;
