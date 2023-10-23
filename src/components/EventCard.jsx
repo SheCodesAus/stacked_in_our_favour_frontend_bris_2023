@@ -18,18 +18,20 @@ const formatDateTime = (dateTimeString) => {
 // Event Card component
 function EventCard(props) {
     const { eventData }= props;
-
     const limitTitleCharacters = (title, limit) => {
         if (title.length > limit) {
             return title.slice(0, limit) + "...";
         }
         return title;
     };
+
+    const eventLink = `${eventData.eventId}`;
     
     return (
         <div className="event-card">
-            <Link to={"/event"}>
-                <h2>{limitTitleCharacters(eventData.title, 75)}</h2>
+            {/* <Link to={"/event"}> */}
+            <Link to={eventLink}>
+                <h2>{eventData.title}</h2>
                 <h4>Organised by {eventData.creator}</h4>
                 <img src={eventData.image} />
                 <h4>{limitTitleCharacters(eventData.description, 100)}</h4>
@@ -40,7 +42,7 @@ function EventCard(props) {
                 <h4>Finish: {formatDateTime(eventData.closeDate)}</h4>          
             </Link>    
         </div>  
-    );}
+    );}   
     
 export default EventCard;
 

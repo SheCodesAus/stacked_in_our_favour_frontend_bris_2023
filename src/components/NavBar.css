@@ -14,7 +14,6 @@ html {
     box-sizing: border-box;
     font-size: 16px;
     font-family: "Roboto", sans-serif;
-    color: var(--teal);
     scroll-behavior: smooth;
 }
 
@@ -308,76 +307,209 @@ ul {
 
 
 
-
-
-/* EventCreationPopup.css */
-
-.event-creation-popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent grey background */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Ensure the popup is above other content */
-}
-
-.event-creation-popup h2 {
-    font-size: 32px;
-    text-align: center;
-    font-weight: bold;
-    margin: 80px 0 8px;
-    color: var(--white);
-    background-color: var(--dark-purple);
-    padding: 24px 16px 24px 16px;
-    width: 70%;
-    border: 2px solid var(--white);
-    border-radius: 8px;
-}
-
-.event-creation-popup input {
-    width: 70%;
-    padding: 16px;
-    margin: 4px 0;
-    border: 1px solid var(--light-purple);
-    border-radius: 8px;
-    font-size: 16px;
-    color: var(--dark-purple);
-}
-
-.event-creation-popup button {
-    background: var(--light-purple);
-    color: var(--white);
-    border: 2px solid var(--dark-purple);;
-    display: flex;
-    padding: 12px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 8px;
-    transition: border-color 0.2s;
-}
-
-.event-creation-popup button:hover,
-.events-page-header button:hover {
-    background: var(--dark-purple);
-    border-color: var(--orange);
-    text-decoration: none;
-}
-
-.mobile-nav a:hover {
-    background-color: var(--dark-purple);
-    border-radius: 4px;
-}
-
-
 /* Hide the navigation links by default in mobile view */
 #nav-bar.mobile-menu-open .navbar-logo-link,
 #nav-bar.mobile-menu-open nav {
     display: block;
 }
+
+
+
+/* All Home Page logout styling */
+
+
+
+/* mobile view */
+
+.banner-block-mobile {
+    display: auto;
+    padding: 0;
+    padding-top: 80px;
+    padding-bottom: 50px;
+    text-align: left;
+    float: left;
+    width: 100%;
+    margin: 0;
+    max-height: 250px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    flex-direction: column; /* Change to vertical layout */
+}
+
+.banner-block.mobile-view {
+    flex-direction: column; 
+    align-items: center; 
+    display: auto;
+}
+
+/* desktop view */
+.banner-block.desktop-view {
+    flex-direction: row; 
+    justify-content: space-between; 
+}
+
+ul.banner-block {
+    background-color: var(--light-purple);
+    display: inline-flex;
+    padding: 0;
+    padding-top: 80px;
+    padding-bottom: 50px;
+    text-align: left;
+    float: left;
+    width: 100%;
+    margin: 0;
+    max-height: 250px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.banner-block {
+    display: inline-flex;
+    padding: 0;
+    padding-top: 80px;
+    padding-bottom: 50px;
+    text-align: left;
+    float: left;
+    width: 100%;
+    margin: 0;
+    max-height: 250px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.block-item {
+    list-style: none;
+    display: inline-block;
+    margin-inline: auto;
+    text-align: center;
+    width: 244px;
+    color: var(--white);
+    margin-bottom: 16px; /* Add some margin between items */
+}
+
+.block-item p {
+    color: var(--white);
+}
+
+
+/* Home Block styles */
+
+/* Add a media query for screens with a maximum width of 768px */
+@media screen and (max-width: 768px) {
+    .home-block-text {
+        width: 100%; 
+        margin: 0; 
+    }
+    
+    .home-block-text h1 {
+        font-size: 24px;
+    }
+
+    .home-block-text h2 {
+        margin-top: 16px;} 
+}
+
+
+.home-block-text {
+    width: 40%;
+    margin: 24px;
+}
+
+.home-block-text h1{
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 40px;
+    color: var(--dark-grey);
+}
+
+.home-block-text h2 {
+    font-family: Roboto;
+    font-weight: 300;
+    color: var(--dark-grey);
+    padding-left: 24px;
+}
+
+.home-block-text h3 {
+    color: var(--white);
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    letter-spacing: 0.4px;
+}
+
+/* added a h4 so we have a dark font variant */
+.home-block-text h4 {
+    font-family: Roboto;
+    font-weight: 300;
+    color: var(--dark-grey);
+}
+
+.home-block-text h5 {
+    color: var(--dark-grey);
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bold;}
+
+.home-block-text p {
+    color: var(--light-grey);
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: 0.28px;
+}
+
+.home-block {
+    display: inline-flex;
+    padding: 0;
+    padding-top: 50px;
+    text-align: left;
+    float: left;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.home-block-image {
+    width: 65%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CSS to shrink the image */
+.shrink-image {
+    max-width: 100%; 
+    opacity: 1; 
+    transition: max-width 0.2s, opacity 0.2s; 
+}
+
+/* Add CSS for making the image disappear on screens smaller than 768px */
+@media screen and (max-width: 768px) {
+    .home-block-image {
+        display: none;
+    }
+
+    .home-block {
+        display: flex;
+        padding: 0;
+        width: 200%;
+        height: 100%;
+    }
+}
+
 
