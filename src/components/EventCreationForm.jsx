@@ -4,8 +4,6 @@ import "./NavBar.css";
 import "./Form.css";
 import "./Dialog.css";
 
-
-
 function EventCreationForm({ onClose, onEventCreate }) {
     const [eventData, setEventData] = useState({
         title: '',
@@ -26,7 +24,6 @@ function EventCreationForm({ onClose, onEventCreate }) {
     };
 
     const handleCreateEvent = () => {
-        // You can add validation here before creating the event
         onEventCreate(eventData);
     };
 
@@ -35,8 +32,9 @@ function EventCreationForm({ onClose, onEventCreate }) {
             <div className="event-creation-popup">
                 <div className='dialog'>
                     <div className='row-1'>
-                    <h2 className='item-1'>Create Event</h2>
-                    <button onClick={onClose} className='item-2'></button>
+                        <h2 className='item-1'>Create Event</h2>
+                        {/* Close button */}
+                        <button onClick={onClose} className='item-2 close-button'>X</button>
                     </div>
                     <input
                         type="text"
