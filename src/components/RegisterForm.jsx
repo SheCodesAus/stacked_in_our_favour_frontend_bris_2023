@@ -103,8 +103,8 @@ function RegisterForm() {
                 <tr>
                     <td style={{verticalAlign: 'middle'}}>
                         <label htmlFor="role">Are you an Organiser?</label>
-                         </td>
-                     <td style={{verticalAlign: 'middle'}}>
+                        </td>
+                    <td style={{verticalAlign: 'middle'}}>
                         <input
                     type="checkbox"
                     id="role"

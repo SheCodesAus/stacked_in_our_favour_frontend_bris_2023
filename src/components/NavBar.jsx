@@ -1,8 +1,8 @@
 import { Link, Outlet } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 
-import logoMobile from "../img/logoMobile.png";
 import logoDesktop from "../img/logoDesktop.png";
+import logoMobile from "../img/logoMobile.png";
 
 import "./NavBar.css";
 
