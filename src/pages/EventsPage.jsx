@@ -5,6 +5,8 @@ import EventCard from '../components/EventCard';
 import EventCreationForm from '../components/EventCreationForm'; 
 import { allEvents } from "../data";
 import "../components/NavBar.css";
+import "../components/EventCard.css";
+import "../components/EventCard";
 import { useNavigate } from "react-router-dom";
 
 function EventsPage() {
