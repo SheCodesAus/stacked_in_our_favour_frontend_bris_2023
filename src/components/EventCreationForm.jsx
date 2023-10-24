@@ -84,10 +84,10 @@ function EventCreationForm({ onClose, onEventCreate, onEventEdit, eventDataToEdi
                         onChange={handleChange}
                     />
                     <div className="button-container">
-                        <button onClick={onClose} className='cancel-button'>Cancel</button>
                         <button onClick={handleCreateEvent} className='create-event-button'>
                             {isEditing ? 'Save Event' : 'Create Event'}
                         </button>
+                        <button onClick={onClose} className='cancel-button'>Cancel</button>
                     </div>
                 </div>
             </div>
