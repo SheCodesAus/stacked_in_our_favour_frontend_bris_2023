@@ -1,7 +1,53 @@
+
+
+
+/* Display three cards in a row on desktop */
+.desktop-view {
+    grid-template-columns: repeat(3, 1fr); 
+}
+
+
+/* Display a single card in a column on mobile */
+.mobile-view {
+    grid-template-columns: 1fr; 
+}
+
+
+
 /* styling for events page */
 #event-list {
     display: grid;
-    grid-template-columns: 30% 30% 30%;
+    height: 30%;
     column-gap: 10px;
     row-gap: 10px;
+    overflow: hidden; /* Add this to hide the image overflow */
+    min-width: 300px;
 }
+
+
+
+.events-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16px 0;
+}
+
+.events-page-header button {
+    background: var(--light-purple);
+    color: var(--white);
+    border: 2px solid var(--dark-purple);;
+    display: flex;
+    padding: 12px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 24px;
+    transition: border-color 0.2s;
+}
+
+.events-page-header h1 {
+    margin: 16px;
+    margin-bottom: 0;
+}
+

@@ -1,5 +1,6 @@
 import { Link } from"react-router-dom";
 import "./NavBar.css";
+import "./EventCard.css";
 
 // Function to format the date and time for Australia
 const formatDateTime = (dateTimeString) => {
@@ -34,7 +35,7 @@ function EventCard(props) {
                 <h2>{eventData.title}</h2>
                 <h4>Organised by {eventData.creator}</h4>
                 <img src={eventData.image} />
-                <h4>{limitTitleCharacters(eventData.description, 100)}</h4>
+                {/* <h4>{limitTitleCharacters(eventData.description, 100)}</h4> */}
                 <h5>Location</h5>
                 <h4>{eventData.location}</h4> 
                 <h5>Date and time</h5>

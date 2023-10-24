@@ -1,4 +1,3 @@
-// import { allEvents } from "../data";
 import useEvents from "../hooks/use-events";
 import "./EventsPage.css";
 import React, { useEffect, useState } from 'react';
@@ -6,6 +5,8 @@ import EventCard from '../components/EventCard';
 import EventCreationForm from '../components/EventCreationForm'; 
 import { allEvents } from "../data";
 import "../components/NavBar.css";
+import "../components/EventCard.css";
+import "../components/EventCard";
 import { useNavigate } from "react-router-dom";
 
 function EventsPage() {
@@ -60,7 +61,11 @@ function EventsPage() {
         <div>
             <div className= "events-page-header">
                 <h1>Events</h1>
-                <button onClick={openEventCreationModal}>Create Event</button>
+                <div className="create-event-container">
+                    <button className="create-event-button" onClick={openEventCreationModal}>
+                    Create Event
+                    </button>
+                </div>
             </div>
             
             <div id="event-list" className={isMobileView ? "mobile-view" : "desktop-view"}>
