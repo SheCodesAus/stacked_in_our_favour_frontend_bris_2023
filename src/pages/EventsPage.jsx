@@ -15,6 +15,7 @@ function EventsPage() {
     const [showPopup, setShowPopup] = useState(false);
     const [isCreatingEvent, setIsCreatingEvent] = useState(false);
     const [isMobileView, setIsMobileView] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false); 
 
     useEffect(() => {
         const handleResize = () => {
@@ -59,13 +60,15 @@ function EventsPage() {
 
     return (
         <div>
-            <div className= "events-page-header">
+            <div className="events-page-header">
                 <h1>Events</h1>
-                <div className="create-event-container">
-                    <button className="create-event-button" onClick={openEventCreationModal}>
-                    Create Event
-                    </button>
-                </div>
+                {isLoggedIn && ( // Conditionally render the button if the user is logged in
+                    <div className="create-event-container">
+                        <button className="create-event-button" onClick={openEventCreationModal}>
+                            Create Event
+                        </button>
+                    </div>
+                )}
             </div>
             
             <div id="event-list" className={isMobileView ? "mobile-view" : "desktop-view"}>
