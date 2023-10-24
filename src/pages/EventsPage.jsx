@@ -7,6 +7,7 @@ import EventCreationForm from '../components/EventCreationForm';
 import { allEvents } from "../data";
 import "../components/NavBar.css";
 import { useNavigate } from "react-router-dom";
+import getEvents from "../api/get-events"
 
 function EventsPage() {
     const navigate = useNavigate();
@@ -20,15 +21,24 @@ function EventsPage() {
             setIsMobileView(window.innerWidth < 768);
         };
 
-        handleResize();
+        const loadEvents = async () => {
+            try {
+                const eventsData = await getEvents();
+                setEvents(eventsData);
+            } catch (error) {
+                console.error("Failed to fetch events:", error);
+            }
+        };
 
+        loadEvents();  // Fetch the events from the backend
+
+        handleResize();
         window.addEventListener('resize', handleResize);
 
         return () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
-
 
     const openPopup = () => {
         setShowPopup(true);
@@ -58,22 +68,19 @@ function EventsPage() {
 
     return (
         <div>
-            <div className= "events-page-header">
+            <div className="events-page-header">
                 <h1>Events</h1>
                 <button onClick={openEventCreationModal}>Create Event</button>
             </div>
             
             <div id="event-list" className={isMobileView ? "mobile-view" : "desktop-view"}>
-                {allEvents.map((eventData, key) => (
-                    <EventCard key={key} eventData={eventData}/>
-                    ))}
-
                 {events
                     .slice()
                     .sort((a, b) => a.title.localeCompare(b.title))
                     .map((eventData, key) => (
                         <EventCard key={key} eventData={eventData} />
-                    ))}
+                ))}
+                
                 {showPopup && (
                     <div className="event-popup">
                         <EventCreationForm
