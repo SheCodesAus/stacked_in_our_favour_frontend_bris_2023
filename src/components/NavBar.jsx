@@ -1,19 +1,16 @@
-import { Link, Outlet } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
+import { Link, Outlet } from "react-router-dom";
+import { useAuth } from "../hooks/use-auth"
 
 import logoDesktop from "../img/logoDesktop.png";
 import logoMobile from "../img/logoMobile.png";
-
 import "./NavBar.css";
 
-import "@fontsource/roboto"; // Defaults to weight 400
-import "@fontsource/roboto/400.css"; // Specify weight
-import "@fontsource/roboto/400-italic.css"; // Specify weight and style
-
-function NavBar() {
+function NavBar({ isLoggedIn, setIsLoggedIn }) {
     const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // Add isLoggedIn state
+    const { auth, setAuth } = useAuth();
+
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -45,7 +42,7 @@ function NavBar() {
                                 <Link to="/events" className="events-link">
                                     Events
                                 </Link>
-                                <Link to="/" className="logout-link">
+                                <Link to="/" className="logout-link" onClick={() => setIsLoggedIn(false)}>
                                     Logout
                                 </Link>
                             </>
@@ -78,7 +75,7 @@ function NavBar() {
                                 <Link to="/events" className="events-link">
                                     Events
                                 </Link>
-                                <Link to="/" className="logout-link">
+                                <Link to="/" className="logout-link" onClick={() => setIsLoggedIn(false)}>
                                     Logout
                                 </Link>
                             </>

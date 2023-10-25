@@ -1,5 +1,6 @@
 import useEvents from "../hooks/use-events";
 import "./EventsPage.css";
+import getEvents from '../api/get-events';
 import React, { useEffect, useState } from 'react';
 import EventCard from '../components/EventCard';
 import EventCreationForm from '../components/EventCreationForm'; 
@@ -15,15 +16,28 @@ function EventsPage() {
     const [showPopup, setShowPopup] = useState(false);
     const [isCreatingEvent, setIsCreatingEvent] = useState(false);
     const [isMobileView, setIsMobileView] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false); 
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    // Call the useEvents function to fetch events data
+    const { getEvents } = useEvents();
 
     useEffect(() => {
         const handleResize = () => {
             setIsMobileView(window.innerWidth < 768);
         };
 
-        handleResize();
+        const loadEvents = async () => {
+            try {
+                const eventsData = await getEvents();
+                setEvents(eventsData);
+            } catch (error) {
+                console.error("Failed to fetch events:", error);
+            }
+        };
 
+        loadEvents();  // Fetch the events using the getEvents function
+
+        handleResize();
         window.addEventListener('resize', handleResize);
 
         return () => {
@@ -74,7 +88,8 @@ function EventsPage() {
             <div id="event-list" className={isMobileView ? "mobile-view" : "desktop-view"}>
                 {allEvents.map((eventData, key) => (
                     <EventCard key={key} eventData={eventData}/>
-                    ))}
+                    ))} 
+                    {/* This code above populates the events which Maddy created, remove if we want to show real events */}
 
                 {events
                     .slice()
