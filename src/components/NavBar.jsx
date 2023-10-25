@@ -1,8 +1,8 @@
 import { Link, Outlet } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 
-import logoMobile from "../img/logoMobile.png";
 import logoDesktop from "../img/logoDesktop.png";
+import logoMobile from "../img/logoMobile.png";
 
 import "./NavBar.css";
 
@@ -10,14 +10,10 @@ import "@fontsource/roboto"; // Defaults to weight 400
 import "@fontsource/roboto/400.css"; // Specify weight
 import "@fontsource/roboto/400-italic.css"; // Specify weight and style
 
-
-
 function NavBar() {
-
-
     const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768);
-
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // Add isLoggedIn state
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -44,18 +40,25 @@ function NavBar() {
                         <img src={logoDesktop} alt="WinStack Logo" className="navbar-logoDesktop" />
                     </Link>
                     <nav className="desktop-nav">
-                        <Link to="/events" className="events-link">
-                            Events
-                        </Link>
-                        <Link to="/register" className="register-link">
-                            Register
-                        </Link>
-                        <Link to="/login" className="login-link">
-                            Login
-                        </Link>
-                        <Link to="/" className="logout-link">
-                            Logout
-                        </Link>
+                        {isLoggedIn ? (
+                            <>
+                                <Link to="/events" className="events-link">
+                                    Events
+                                </Link>
+                                <Link to="/" className="logout-link">
+                                    Logout
+                                </Link>
+                            </>
+                        ) : (
+                            <>
+                                <Link to="/register" className="register-link">
+                                    Register
+                                </Link>
+                                <Link to="/login" className="login-link">
+                                    Login
+                                </Link>
+                            </>
+                        )}
                     </nav>
                 </div>
             )}
@@ -70,18 +73,25 @@ function NavBar() {
                         <img src={logoMobile} alt="WinStack Logo" className="navbar-logoMobile" />
                     </Link>
                     <nav className="mobile-nav">
-                        <Link to="/" className="logout-link">
-                            Logout
-                        </Link>
-                        <Link to="/login" className="login-link">
-                            Login
-                        </Link>
-                        <Link to="/register" className="register-link">
-                            Register
-                        </Link>
-                    <Link to="/events" className="events-link">
-                            Events
-                        </Link>
+                        {isLoggedIn ? (
+                            <>
+                                <Link to="/events" className="events-link">
+                                    Events
+                                </Link>
+                                <Link to="/" className="logout-link">
+                                    Logout
+                                </Link>
+                            </>
+                        ) : (
+                            <>
+                                <Link to="/login" className="login-link">
+                                    Login
+                                </Link>
+                                <Link to="/register" className="register-link">
+                                    Register
+                                </Link>
+                            </>
+                        )}
                     </nav>
                 </div>
             )}
@@ -95,29 +105,3 @@ function NavBar() {
 }
 
 export default NavBar;
-
-
-
-
-//     return (
-//         <>
-//             <nav className="header">
-//                 <a href="/"><img id="logo" src={Logo} alt="Logo"></img></a>
-//                 <ul id="navlist">
-//                     <li>
-//                         <Link to="/events">Events</Link>
-//                         <Link to="/login">Login</Link>
-//                         <Link to="/">Logout</Link>
-//                         <Link to="/register">Register</Link>
-//                     </li>
-//                 </ul>
-//             </nav>
-//             <Outlet />
-//         </>
-
-//     );
-// }
-
-
-// export default NavBar;
-

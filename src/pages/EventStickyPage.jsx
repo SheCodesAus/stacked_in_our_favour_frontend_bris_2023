@@ -9,6 +9,7 @@ import StickyNote from "../components/StickyNote";
 // sticky note events page
 function EventStickyPage() {
     const { id } = useParams();
+    console.log("Event ID in EventStickyPage: ", id);
     const { event, isLoading, error } = useEvent(id);
     window.localStorage.setItem('currentEventId', id);
   

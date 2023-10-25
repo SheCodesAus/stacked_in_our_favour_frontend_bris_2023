@@ -1,19 +1,26 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
 import "./NavBar.css";
 import "./Form.css";
 import "./Dialog.css";
 
-function EventCreationForm({ onClose, onEventCreate }) {
+function EventCreationForm({ onClose, onEventCreate, onEventEdit, eventDataToEdit }) {
+    const [isEditing, setIsEditing] = useState(false);
     const [eventData, setEventData] = useState({
-        title: '',
-        creator: '',
-        image: '',
-        description: '',
-        location: '',
-        date: '',
-        time: '',
+        title: "",
+        creator: "",
+        image: "",
+        description: "",
+        location: "",
+        date: "",
+        time: "",
     });
+
+    useEffect(() => {
+        if (eventDataToEdit) {
+            setIsEditing(true);
+            setEventData(eventDataToEdit);
+        }
+    }, [eventDataToEdit]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -23,20 +30,19 @@ function EventCreationForm({ onClose, onEventCreate }) {
         });
     };
 
-    const handleCreateEvent = (e) => {
-        e.preventDefault(); // Prevent default form submission
-        onEventCreate(eventData);
+    const handleCreateEvent = () => {
+        if (isEditing) {
+            onEventEdit(eventData);
+        } else {
+            onEventCreate(eventData);
+        }
     };
 
     return (
         <form onSubmit={handleCreateEvent}>
             <div className="event-creation-popup">
                 <div className='dialog'>
-                    <div className='row-1'>
-                        <h2 className='item-1'>Create Event</h2>
-                        {/* Close button */}
-                        <button type="button" onClick={onClose} className='item-2 close-button'>X</button>
-                    </div>
+                    <h2 className='item-1'>{isEditing ? 'Edit the Event' : 'Create New Event'}</h2>
                     <input
                         type="text"
                         name="title"
@@ -77,7 +83,12 @@ function EventCreationForm({ onClose, onEventCreate }) {
                         value={eventData.image}
                         onChange={handleChange}
                     />
-                    <button type="submit">Create Event</button>
+                    <div className="button-container">
+                        <button onClick={handleCreateEvent} className='create-event-button'>
+                            {isEditing ? 'Save Event' : 'Create Event'}
+                        </button>
+                        <button onClick={onClose} className='cancel-button'>Cancel</button>
+                    </div>
                 </div>
             </div>
         </form>
@@ -85,4 +96,3 @@ function EventCreationForm({ onClose, onEventCreate }) {
 }
 
 export default EventCreationForm;
-
