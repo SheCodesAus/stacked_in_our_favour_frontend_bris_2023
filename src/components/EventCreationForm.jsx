@@ -23,18 +23,19 @@ function EventCreationForm({ onClose, onEventCreate }) {
         });
     };
 
-    const handleCreateEvent = () => {
+    const handleCreateEvent = (e) => {
+        e.preventDefault(); // Prevent default form submission
         onEventCreate(eventData);
     };
 
     return (
-        <form>
+        <form onSubmit={handleCreateEvent}>
             <div className="event-creation-popup">
                 <div className='dialog'>
                     <div className='row-1'>
                         <h2 className='item-1'>Create Event</h2>
                         {/* Close button */}
-                        <button onClick={onClose} className='item-2 close-button'>X</button>
+                        <button type="button" onClick={onClose} className='item-2 close-button'>X</button>
                     </div>
                     <input
                         type="text"
@@ -76,7 +77,7 @@ function EventCreationForm({ onClose, onEventCreate }) {
                         value={eventData.image}
                         onChange={handleChange}
                     />
-                    <button onClick={handleCreateEvent}>Create Event</button>
+                    <button type="submit">Create Event</button>
                 </div>
             </div>
         </form>
@@ -84,3 +85,4 @@ function EventCreationForm({ onClose, onEventCreate }) {
 }
 
 export default EventCreationForm;
+

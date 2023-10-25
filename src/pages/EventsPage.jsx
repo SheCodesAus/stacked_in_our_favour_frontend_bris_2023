@@ -7,6 +7,7 @@ import EventCreationForm from '../components/EventCreationForm';
 import { allEvents } from "../data";
 import "../components/NavBar.css";
 import { useNavigate } from "react-router-dom";
+import postEvent from '../api/post-event';
 import getEvents from "../api/get-events"
 
 function EventsPage() {
@@ -56,14 +57,26 @@ function EventsPage() {
         setIsCreatingEvent(false);
     };
 
-    const handleEventCreation = (newEventData) => {
-        const newEvent = {
-            id: events.length + 1,
-            ...newEventData,
-        };
-
-        setEvents([...events, newEvent]);
-        closeEventCreationModal();
+    const handleEventCreation = async (newEventData) => {
+        try {
+            const response = await postEvent(
+                newEventData.title,
+                newEventData.description,
+                newEventData.image,
+                // Add other fields as needed
+            );
+            
+            // Assuming the id of the new event is returned in the response
+            const newEvent = {
+                id: response.id,
+                ...newEventData,
+            };
+            
+            setEvents([...events, newEvent]);
+            closeEventCreationModal();
+        } catch (error) {
+            console.error("Failed to create event:", error);
+        }
     };
 
     return (
