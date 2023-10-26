@@ -1,4 +1,4 @@
-async function postRegister(email, username, password, role) {
+async function postRegister(email, username, password, role, organiserID) {
     const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
     const url = `${baseUrl}/register/`;
 
@@ -9,13 +9,14 @@ async function postRegister(email, username, password, role) {
         response = await fetch(url, {
             method: "POST",
             headers: {
+                'Authorization': `Token ${your_token_here}`,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
                 "email": email,
                 "username": username,
-                "password": password,
-                "role": role
+                "password": role,
+                "organiserID": organiserID
             }),
         });
     } catch (error) {

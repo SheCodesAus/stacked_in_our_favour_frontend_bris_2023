@@ -1,15 +1,12 @@
 /* Styling for Sticky notes on Event Sticky Page */
 
 .sticky-note {
-    width: 23%;  /* Allow for some margin space */
-    margin: 1%;  /* Margins around each sticky note */
     background-color: plum;
-    /* Additional styling to make it look more like a sticky note */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    padding: 15px;
+    padding: 70px;  /* Adjust padding as needed */
     text-align: center;
-    transition: transform 0.2s; /* Animation */
+    transition: transform 0.2s;
 }
 
 /* Add some hover effects to the sticky note */
@@ -29,3 +26,12 @@
 .sticky-note.green {
     background-color: #C8FFC1;
 }
+
+.sticky-note h2.noteText {
+    font-weight: bold;
+    margin-bottom: 20px; /* Add space between the note and author */
+  }
+  
+  .sticky-note h2.authorText {
+    font-size: 0.8em; /* Make the text a bit smaller */
+  }

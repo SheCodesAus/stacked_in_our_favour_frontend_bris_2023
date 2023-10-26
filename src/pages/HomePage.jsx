@@ -30,8 +30,8 @@ function HomePage() {
 
     return (
         <>
-            <div class="home-block">
-                <div class="home-block-text">
+            <div className="home-block">
+                <div className="home-block-text">
                     <h1>
                         Celebrate WINS during your{" "}
                         <span style={{ color: PurpleText.color }}>SHE</span>
@@ -42,14 +42,14 @@ function HomePage() {
                     </h2>
                 </div>
                 <div
-                    class={`home-block-image ${
+                    className={`home-block-image ${
                         isMobileView ? "mobile-view" : "desktop-view"
                     }`}
                 >
                     <img
                         src={stickyImage}
                         alt="Illustration of people posting sticky notes onto a board."
-                        class={`shrink-image ${isMobileView ? "disappear" : ""}`}
+                        className={`shrink-image ${isMobileView ? "disappear" : ""}`}
                     />
                 </div>
             </div>

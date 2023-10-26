@@ -3,18 +3,19 @@ import { useNavigate } from "react-router-dom";
 import "./Form.css";
 
 import postSticky from "../api/post-sticky";
-// import useAuth from "../hooks/use-auth.js";
 
 function StickyNoteForm () {
     const navigate = useNavigate();
     const currentEventId = window.localStorage.getItem('currentEventId');
-    // const {auth, setAuth} = useAuth();
+    console.log('Current Event ID:', currentEventId);
 
-    //we are not passing is open and date, because user should not control them unless they have permissons
-    const [stickyDetails, setStickyDetails] = useState ({
+    const [stickyDetails, setStickyDetails] = useState({
         "noteText": "",
         "anonymous": false
     });
+
+    // New state for the Anonymous checkbox
+    const [isAnonymous, setIsAnonymous] = useState(false);
 
     const handleChange = (event) => {
         const { id, value } = event.target;
@@ -22,45 +23,57 @@ function StickyNoteForm () {
             ...prevStickyDetails,
             [id]: value,
         }));
+        console.log('Updated Sticky Details:', stickyDetails);
+    };
+
+    const handleAnonymousChange = () => {
+        setIsAnonymous(!isAnonymous);
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // console.log("create button pressed")
-            postSticky(
-                stickyDetails.noteText,
-                stickyDetails.anonymous,
-                currentEventId
-            ).then((response) => {
-    // console.log("RESPONSE FROM POST REQ: ", response)
+        // Assume currentUsername holds the username of the logged-in user
+        const currentUsername = window.localStorage.getItem("username"); // Or fetch it from where you store it
+
+        if (!currentUsername) {
+            console.log("User is not logged in. Redirecting to login page.");
+            // Redirect to login or show a message
+            return;
+        }
+        console.log('Current Username:', currentUsername);
+        console.log('Submitting with:', stickyDetails.noteText, stickyDetails.anonymous, currentEventId, currentUsername);
+        postSticky(
+            stickyDetails.noteText,
+            stickyDetails.anonymous,
+            currentEventId,
+            currentUsername  // Pass the authorID here
+        ).then((response) => {
             navigate(`/events/${currentEventId}`);
-            });
+        });
     };
 
-
-// function StickyNoteForm() {    
     return (
-        // <h1>Sticky form</h1>
         <form>
             <h1>Create Sticky Note</h1>
             <div className="text-field-style">
                 <label htmlFor="noteText">Share your win:</label>
-                    <input 
-                        type="text" 
-                        id="noteText" 
-                        placeholder="Share your win in 50 characters or less"
-                        onChange={handleChange}
-                    />      
-                </div>
-                <div>
-                    <input 
-                        type="checkbox" /> 
-                        Anonymous    
-                </div>
-                <div className="button-style">
+                <input 
+                    type="text" 
+                    id="noteText" 
+                    placeholder="Share your win in 50 characters or less"
+                    onChange={handleChange}
+                />      
+            </div>
+            <div>
+                <input 
+                    type="checkbox" 
+                    onChange={handleAnonymousChange} // New handler here
+                /> 
+                Anonymous    
+            </div>
+            <div className="button-style">
                 <button type="submit" onClick={handleSubmit}><span>Create</span></button>
-                </div>
-                
+            </div>
         </form>
     );
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";  // added useEffect
+import { useState, useEffect } from "react";  
 import { Link, useNavigate } from "react-router-dom";
 import postRegister from "../api/postRegister";
 import useAuth from "../hooks/use-auth";
@@ -16,12 +16,18 @@ function RegisterForm() {
         role: "Attendee"  // default role is 'Attendee'
     });
 
+    const [organiserID, setOrganiserID] = useState('');
+
     const handleChange = (event) => {
         const { id, value } = event.target;
         setCredentials((prevCredentials) => ({
             ...prevCredentials,
             [id]: value,
         }));
+    };
+
+    const handleOrganiserIDChange = (event) => {
+        setOrganiserID(event.target.value);
     };
 
     const handleCheckboxChange = (event) => {
@@ -114,6 +120,21 @@ function RegisterForm() {
         </tr>
     </tbody>
 </table>
+
+{/* Conditionally rendered Organiser ID input */}
+{credentials.role === 'Organiser' && (
+                <div className="input-styling">
+                    <label htmlFor="organiserID">Organiser ID</label>
+                    <input
+                        type="text"
+                        id="organiserID"
+                        placeholder="Enter Organiser ID"
+                        value={organiserID}
+                        onChange={handleOrganiserIDChange}
+                    />
+                </div>
+            )}
+
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             <div className="input-styling">
                 <button type="submit"><span>Register</span></button>
