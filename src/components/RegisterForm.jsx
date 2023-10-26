@@ -31,7 +31,7 @@ function RegisterForm() {
     };
 
     const handleCheckboxChange = (event) => {
-        const selectedRole = event.target.checked ? 'Organiser' : 'Attendee';
+        const selectedRole = event.target.checked ? 'organiser' : 'attendee';
         setCredentials((prevCredentials) => ({
             ...prevCredentials,
             role: selectedRole,
@@ -122,7 +122,7 @@ function RegisterForm() {
 </table>
 
 {/* Conditionally rendered Organiser ID input */}
-{credentials.role === 'Organiser' && (
+{credentials.role === 'organiser' && (
                 <div className="input-styling">
                     <label htmlFor="organiserID">Organiser ID</label>
                     <input
