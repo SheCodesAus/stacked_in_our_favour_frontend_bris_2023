@@ -9,7 +9,6 @@ async function postRegister(email, username, password, role, organiserID) {
         response = await fetch(url, {
             method: "POST",
             headers: {
-                'Authorization': `Token ${your_token_here}`,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
