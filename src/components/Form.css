@@ -1,0 +1,144 @@
+.input-styling {
+    padding: 12px 24px 12px 24px;
+}
+
+.style-a {
+    padding: 12px 24px 12px 24px;
+}
+
+form {
+    margin: 20px;
+    width: 40%;
+}
+
+input {
+    border-style: none;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 2px solid var(--light-purple);
+    padding-top: 16px;
+}
+
+input:hover {
+    background-color: var(--pale-purple);
+    background: var(--pale-purple);
+    transition: 0.5s;
+}
+
+button {
+    color: var(--light-purple);
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    border: 2px solid var(--light-purple);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    background: var(--pale-purple);
+    padding: 12px 24px;
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+
+.item-1 {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-style: normal;
+}
+
+/* button:hover {
+    background-color: #DFD0EB;
+    font-weight: 700;
+} */
+
+button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+button span:after {
+    content: "\270D";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+button:hover span {
+    padding-right: 25px;
+    transition: 0.5s;
+}
+
+button:hover {
+    background-color: var(--pale-purple);
+    font-weight: 700;
+}
+
+button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.row {
+    padding-top: 2%;
+    width: 100%;
+}
+
+.button-style {
+    padding: 24px;
+}
+
+.text-field-style {
+    padding: 12px 24px 12px 24px;
+    box-sizing: border-box;
+}
+
+h1 {
+    padding: 12px 24px 12px 24px;
+    margin: 0;
+}
+
+label {
+    color: var(--light-purple);
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.error-message {
+<<<<<<< HEAD
+    color: #8246AF;              
+    font-weight: bold;        
+    margin-top: 10px;         
+    font-size: 1.1rem;        
+    text-align: center;       
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+=======
+    color: var(--light-purple);
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+
+
+
+
+>>>>>>> 6addcc16a7c6dd6189363187b7b0a3ab834ec1dc

@@ -5,8 +5,7 @@ event-sticky-page {
 
 #sticky-list {
     display: grid;
-    /* grid-template-columns: 30% 30% 30%; */
-    margin: 20px;
-    column-gap: 50px;
-    row-gap: 50px;
+    grid-template-columns: repeat(4, 1fr); /* This creates 4 columns */
+    gap: 20px;  /* Shorter form to specify both row-gap and column-gap */
+    margin: 70px;
 }

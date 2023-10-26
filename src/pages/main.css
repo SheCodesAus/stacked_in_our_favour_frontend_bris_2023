@@ -1,44 +1,58 @@
+:root {
+    --orange: #ffa300;
+    --dark-purple: #6300af;
+    --light-purple: #8246af;
+    --dark-grey: #3f3f3f;
+    --med-grey: #5f5f5f;
+    --light-grey: #c6c6c6;
+    --white: #ffffff;
+}
 
 
-h1{
+.home-block-text {
+    width: 40%;
+    margin: 36px;
+}
+
+.home-block-text h1{
     font-family: Roboto;
     font-weight: bold;
     font-size: 40px;
-    color: #212121;
+    color: var(--dark-grey);
 }
 
-h2 {
+.home-block-text h2 {
     font-family: Roboto;
     font-weight: 300;
-    color: #333333;
+    color: var(--dark-grey);
 }
 
-h3 {
-    color: #FFF;
+.home-block-text h3 {
+    color: var(--white);
     font-family: Roboto;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
-    line-height: 150%; /* 30px */
+    line-height: 150%;
     letter-spacing: 0.4px;
 }
 
 /* added a h4 so we have a dark font variant */
-h4 {
+.home-block-text h4 {
     font-family: Roboto;
     font-weight: 300;
-    color: #333333;
+    color: var(--dark-grey);
 }
 
-h5 {
-    color: #333333;
+.home-block-text h5 {
+    color: var(--dark-grey);
     font-family: Roboto;
     font-size: 20px;
     font-style: normal;
     font-weight: bold;}
 
-p {
-    color: #EDEDED;
+.home-block-text p {
+    color: var(--light-grey);
     font-family: Roboto;
     font-size: 14px;
     font-style: normal;
@@ -50,17 +64,15 @@ p {
 .home-block {
     display: inline-flex;
     padding: 0;
-    padding-top: 70px;
+    padding-top: 50px;
     text-align: left;
     float: left;
-    /* width: 33%; */
     width: 100%;
     height: 100%;
     margin: 0;
 }
 
 .home-block-image {
-
     width: 65%;
     margin: auto;
     display: flex;
@@ -68,7 +80,3 @@ p {
     justify-content: center;
 }
 
-.home-block-text {
-    width: 35%;
-    margin: 54px;
-}

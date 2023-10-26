@@ -1,0 +1,130 @@
+.dialog {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 16px;
+    width: 40%;
+}
+
+
+.row-1 {
+    display: flex;
+}
+
+
+.event-creation-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent grey background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure the popup is above other content */
+}
+
+/* Events Page Styles */
+.create-event-container {
+    display: flex;
+    align-items: center;
+}
+
+.button-container {
+    justify-content: center; 
+    margin-top: 24px; 
+}
+
+.create-event-button,
+.cancel-button {
+    width: 100%;
+    background: var(--pale-grey);
+    color: var(--light-purple);
+    border: 2px solid var(--light-purple);
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: border-color 0.2s;
+    margin: 4px;
+}
+
+.create-event-button:hover,
+.cancel-button:hover {
+    width: 100%;
+    background: var(--pale-purple);
+    color: var(--light-purple);
+    border: 2px solid var(--light-purple);
+    transition: border-color 0.2s;
+}
+
+
+@media screen and (max-width: 768px) {
+    .dialog {
+        background-color: var(--white);
+        padding: 40px;
+        border-radius: 16px;
+        width: 80%;
+    }
+
+    .button-container {
+        display: block;
+        text-align: center;
+    }
+
+    .create-event-button,
+    .cancel-button {
+        width: 100%; 
+        margin: 12px; 
+    }
+}
+
+
+/* .event-creation-popup h2 {
+    font-size: 32px;
+    text-align: center;
+    font-weight: bold;
+    margin: 80px 0 8px;
+    color: var(--white);
+    background-color: var(--dark-purple);
+    padding: 24px 16px 24px 16px;
+    width: 70%;
+    border: 2px solid var(--white);
+    border-radius: 8px;
+}
+
+.event-creation-popup input {
+    width: 70%;
+    padding: 16px;
+    margin: 4px 0;
+    border: 1px solid var(--light-purple);
+    border-radius: 8px;
+    font-size: 16px;
+    color: var(--dark-purple);
+}
+
+.event-creation-popup button {
+    background: var(--light-purple);
+    color: var(--white);
+    border: 2px solid var(--dark-purple);;
+    display: flex;
+    padding: 12px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 8px;
+    transition: border-color 0.2s;
+}
+
+.event-creation-popup button:hover,
+.events-page-header button:hover {
+    background: var(--dark-purple);
+    border-color: var(--orange)
+    text-decoration: none;
+}
+
+.mobile-nav a:hover {
+    background-color: var(--dark-purple);
+    border-radius: 4px;
+} */
