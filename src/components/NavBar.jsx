@@ -57,7 +57,7 @@ function NavBar() {
         <div>
             {!isMobileView && (
                 <div id="nav-bar">
-                    <Link to="/events" className={`navbar-logo-link ${isActive('/events')}`}>
+                    <Link to="/" className={`navbar-logo-link ${isActive('/')}`}>
                         <img src={logoDesktop} alt="WinStack Logo" className="navbar-logoDesktop" />
                     </Link>
                     <nav className="desktop-nav">

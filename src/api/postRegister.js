@@ -14,7 +14,8 @@ async function postRegister(email, username, password, role, organiserID) {
             body: JSON.stringify({
                 "email": email,
                 "username": username,
-                "password": role,
+                "password": password,
+                "role": role,
                 "organiserID": organiserID
             }),
         });
