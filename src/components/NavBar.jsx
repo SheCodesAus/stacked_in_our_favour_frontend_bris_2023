@@ -1,9 +1,9 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
+import { Link, Outlet, useLocation } from "react-router-dom";
+import { useAuth } from "../hooks/use-auth"
 
 import logoDesktop from "../img/logoDesktop.png";
 import logoMobile from "../img/logoMobile.png";
-
 import "./NavBar.css";
 
 function NavBar() {
@@ -11,6 +11,7 @@ function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const location = useLocation();
+    const { auth, setAuth } = useAuth();
 
     const handleLogout = () => {
         localStorage.removeItem('token');

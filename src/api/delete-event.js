@@ -21,4 +21,5 @@ async function deleteEventAPI(eventId) {
     return true;  // Successfully deleted
 }
 
+
 export default deleteEventAPI;

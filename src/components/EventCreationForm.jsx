@@ -14,6 +14,7 @@ function EventCreationForm({ onClose, onEventCreate, onEventEdit, eventDataToEdi
         date: "",
         time: "",
     });
+    const [stepComplete, setStepComplete] = useState(false); // Step completion state
 
     useEffect(() => {
         if (eventDataToEdit) {
@@ -28,6 +29,10 @@ function EventCreationForm({ onClose, onEventCreate, onEventEdit, eventDataToEdi
             ...eventData,
             [name]: value,
         });
+    };
+
+    const handleStepCompleteChange = () => {
+        setStepComplete(!stepComplete);
     };
 
     const handleCreateEvent = () => {
@@ -83,6 +88,17 @@ function EventCreationForm({ onClose, onEventCreate, onEventEdit, eventDataToEdi
                         value={eventData.image}
                         onChange={handleChange}
                     />
+                    <div>
+                        <label>
+                            Event Complete:
+                            <input
+                                type="checkbox"
+                                name="stepComplete"
+                                checked={stepComplete}
+                                onChange={handleStepCompleteChange}
+                            />
+                        </label>
+                    </div>
                     <div className="button-container">
                         <button onClick={handleCreateEvent} className='create-event-button'>
                             {isEditing ? 'Save Event' : 'Create Event'}
