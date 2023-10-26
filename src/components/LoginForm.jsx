@@ -8,6 +8,8 @@ function LoginForm() {
     const navigate = useNavigate();
     const { auth, setAuth } = useAuth();
 
+    console.log('Is user logged in?', window.localStorage.getItem("token") !== null);
+
     const [credentials, setCredentials] = useState({
         username: "",
         password: "",
@@ -22,7 +24,7 @@ function LoginForm() {
         }));
         setErrorMessage("");  // Clear error messages when user types
     };
-
+    
     const handleSubmit = (event) => {
         event.preventDefault();
         if (credentials.username && credentials.password) {
@@ -31,6 +33,7 @@ function LoginForm() {
                 credentials.password
             ).then((response) => {
                 window.localStorage.setItem("token", response.token);
+                window.localStorage.setItem("username", credentials.username);  // Store username
                 setAuth({
                     token: response.token,
                 });
@@ -40,6 +43,7 @@ function LoginForm() {
             });
         }
     };
+    
 
     return (
         <form>

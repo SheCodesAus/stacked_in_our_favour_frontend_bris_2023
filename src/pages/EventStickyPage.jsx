@@ -9,6 +9,7 @@ import StickyNote from "../components/StickyNote";
 // sticky note events page
 function EventStickyPage() {
     const { id } = useParams();
+    console.log("Event ID in EventStickyPage: ", id);
     const { event, isLoading, error } = useEvent(id);
     window.localStorage.setItem('currentEventId', id);
   
@@ -34,15 +35,11 @@ function EventStickyPage() {
             {/* <h4>{`Status: ${oneEventSticky.is_open}`}</h4> */}
             <a href="/sticky-notes">+ Create Sticky Note</a>    
             <h2>Wins:</h2>
-            <li>
+        <div id="sticky-list">
                 {event.stickyNotes.map((stickyData, key) => {
-                    return (
-                        <div id="sticky-list">
-                            <StickyNote stickyData={stickyData} />
-                        </div>
-                    );
-                })}
-            </li>
+                    return <StickyNote stickyData={stickyData} key={key} />;
+            })}
+        </div>
         </div>
     );
 }

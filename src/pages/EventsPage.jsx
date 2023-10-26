@@ -9,9 +9,10 @@ import "../components/NavBar.css";
 import "../components/EventCard.css";
 import "../components/EventCard";
 import { useNavigate } from "react-router-dom";
+import postEvent from '../api/post-event';
+import getEvents from "../api/get-events"
 
 function EventsPage() {
-    const navigate = useNavigate();
     const [events, setEvents] = useState([]);
     const [showPopup, setShowPopup] = useState(false);
     const [isCreatingEvent, setIsCreatingEvent] = useState(false);
@@ -22,8 +23,17 @@ function EventsPage() {
     const { getEvents } = useEvents();
 
     useEffect(() => {
-        const handleResize = () => {
-            setIsMobileView(window.innerWidth < 768);
+        // Simulated authentication check
+        const authStatus = true; // Replace this with your actual authentication logic
+        setIsLoggedIn(authStatus);
+
+        const loadEvents = async () => {
+            try {
+                const eventsData = await getEvents();
+                setEvents(eventsData);
+            } catch (error) {
+                console.error("Failed to fetch events:", error);
+            }
         };
 
         const loadEvents = async () => {
@@ -45,15 +55,6 @@ function EventsPage() {
         };
     }, []);
 
-
-    const openPopup = () => {
-        setShowPopup(true);
-    };
-
-    const closePopup = () => {
-        setShowPopup(false);
-    };
-
     const openEventCreationModal = () => {
         setIsCreatingEvent(true);
     };
@@ -62,14 +63,22 @@ function EventsPage() {
         setIsCreatingEvent(false);
     };
 
-    const handleEventCreation = (newEventData) => {
-        const newEvent = {
-            id: events.length + 1,
-            ...newEventData,
-        };
-
-        setEvents([...events, newEvent]);
-        closeEventCreationModal();
+    const handleEventCreation = async (newEventData) => {
+        try {
+            const response = await postEvent(
+                newEventData.title,
+                newEventData.description,
+                newEventData.image
+            );
+            const newEvent = {
+                id: response.id,
+                ...newEventData,
+            };
+            setEvents([...events, newEvent]);
+            closeEventCreationModal();
+        } catch (error) {
+            console.error("Failed to create event:", error);
+        }
     };
 
     return (
@@ -115,6 +124,14 @@ function EventsPage() {
                     </div>
                 )}
             </div>
+            {isCreatingEvent && (
+                <div className="event-popup">
+                    <EventCreationForm
+                        onClose={closeEventCreationModal}
+                        onEventCreate={handleEventCreation}
+                    />
+                </div>
+            )}
         </div>
     );
 }

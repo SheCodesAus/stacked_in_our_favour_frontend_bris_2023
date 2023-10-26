@@ -4,9 +4,10 @@ async function getEvent(eventId) {
     if (!response.ok) {
         const fallbackError =`Error fetching event with id ${eventId}`;
         
-        const data = awaitresponse.json().catch(() => {
+        const data = await response.json().catch(() => {
             throw new Error(fallbackError);
         });
+        
         
         const errorMessage = data?.detail?? fallbackError;
         throw new Error(errorMessage);  

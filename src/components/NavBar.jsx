@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/use-auth"
 
 import logoDesktop from "../img/logoDesktop.png";
 import logoMobile from "../img/logoMobile.png";
 import "./NavBar.css";
 
-function NavBar({ isLoggedIn, setIsLoggedIn }) {
+function NavBar() {
     const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const location = useLocation();
     const { auth, setAuth } = useAuth();
 
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        setIsLoggedIn(false);
+        window.location.href = '/';
+    };
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -28,72 +35,71 @@ function NavBar({ isLoggedIn, setIsLoggedIn }) {
         };
     }, []);
 
+    useEffect(() => {
+        setIsLoggedIn(window.localStorage.getItem("token") !== null);
+
+        const handleStorageChange = () => {
+            setIsLoggedIn(window.localStorage.getItem("token") !== null);
+        };
+
+        window.addEventListener('storage', handleStorageChange);
+
+        return () => {
+            window.removeEventListener('storage', handleStorageChange);
+        };
+    }, []);
+
+    const isActive = (path) => location.pathname === path ? 'active' : '';
+
+    const isEventsOrStickyPage = location.pathname.startsWith("/events") || location.pathname.startsWith("/stickynotes");
+
     return (
         <div>
-            {/* NavBar Desktop View */}
             {!isMobileView && (
                 <div id="nav-bar">
-                    <Link to="/events" className="navbar-logo-link">
+                    <Link to="/events" className={`navbar-logo-link ${isActive('/events')}`}>
                         <img src={logoDesktop} alt="WinStack Logo" className="navbar-logoDesktop" />
                     </Link>
                     <nav className="desktop-nav">
                         {isLoggedIn ? (
                             <>
-                                <Link to="/events" className="events-link">
-                                    Events
-                                </Link>
-                                <Link to="/" className="logout-link" onClick={() => setIsLoggedIn(false)}>
-                                    Logout
-                                </Link>
+                                {isEventsOrStickyPage && <Link to="/" className={`home-link ${isActive('/')}`}>Home</Link>}
+                                <Link to="/events" className={`events-link ${isActive('/events')}`}>Events</Link>
+                                <Link to="/" className={`logout-link ${isActive('/')}`} onClick={handleLogout}>Logout</Link>
                             </>
                         ) : (
                             <>
-                                <Link to="/register" className="register-link">
-                                    Register
-                                </Link>
-                                <Link to="/login" className="login-link">
-                                    Login
-                                </Link>
+                                <Link to="/register" className={`register-link ${isActive('/register')}`}>Register</Link>
+                                <Link to="/login" className={`login-link ${isActive('/login')}`}>Login</Link>
                             </>
                         )}
                     </nav>
                 </div>
             )}
-
-            {/* Unicode character for the menu icon */}
             {isMobileView && (
                 <div id="nav-bar" className={isMenuOpen ? "mobile-menu-open" : ""}>
                     <div className="menu-icon" onClick={toggleMenu}>
                         &#9776;
                     </div>
-                    <Link to="/events" className="navbar-logo-link">
+                    <Link to="/events" className={`navbar-logo-link ${isActive('/events')}`}>
                         <img src={logoMobile} alt="WinStack Logo" className="navbar-logoMobile" />
                     </Link>
                     <nav className="mobile-nav">
                         {isLoggedIn ? (
                             <>
-                                <Link to="/events" className="events-link">
-                                    Events
-                                </Link>
-                                <Link to="/" className="logout-link" onClick={() => setIsLoggedIn(false)}>
-                                    Logout
-                                </Link>
+                                {isEventsOrStickyPage && <Link to="/" className={`home-link ${isActive('/')}`}>Home</Link>}
+                                <Link to="/events" className={`events-link ${isActive('/events')}`}>Events</Link>
+                                <Link to="/" className={`logout-link ${isActive('/')}`} onClick={handleLogout}>Logout</Link>
                             </>
                         ) : (
                             <>
-                                <Link to="/login" className="login-link">
-                                    Login
-                                </Link>
-                                <Link to="/register" className="register-link">
-                                    Register
-                                </Link>
+                                <Link to="/register" className={`register-link ${isActive('/register')}`}>Register</Link>
+                                <Link to="/login" className={`login-link ${isActive('/login')}`}>Login</Link>
                             </>
                         )}
                     </nav>
                 </div>
             )}
-
-            {/* Content Container */}
             <div className="content-container">
                 <Outlet />
             </div>
@@ -102,3 +108,4 @@ function NavBar({ isLoggedIn, setIsLoggedIn }) {
 }
 
 export default NavBar;
+

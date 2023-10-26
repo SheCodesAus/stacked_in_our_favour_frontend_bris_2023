@@ -44,7 +44,7 @@ function EventCreationForm({ onClose, onEventCreate, onEventEdit, eventDataToEdi
     };
 
     return (
-        <form>
+        <form onSubmit={handleCreateEvent}>
             <div className="event-creation-popup">
                 <div className='dialog'>
                     <h2 className='item-1'>{isEditing ? 'Edit the Event' : 'Create New Event'}</h2>
