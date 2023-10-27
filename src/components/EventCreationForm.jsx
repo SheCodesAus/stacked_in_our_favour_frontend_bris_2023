@@ -12,7 +12,7 @@ function EventCreationForm({ onClose, onEventCreate, onEventEdit, eventDataToEdi
         title: "",
         description: "",
         location: "",
-        creator: "",
+        creator: "organiser",
         image: "",
         isOpen: true,
     });
