@@ -14,7 +14,6 @@ async function getEvents() {
         
         // Here we use the `await` keyword to signal to Javascript that itshouldn't run this code until `response` gets turned into JSON
         const data = await response.json().catch(() => {
-            // If the response is not JSON then we will throw a generic error.`catch` will trigger if we try to turn `response` into JSON and fail
             throw new Error(fallbackError);
         });
     // If the error response *is* JSON, then we will include the info fromthat JSON in the error we throw.
