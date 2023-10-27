@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { setLoginState } from '../components/NavBar'; // Import the function from NavBar
 import "../components/NavBar.css";
 import PromoteBanner from "../components/PromoteBanner";
 import stickyImage from "../assets/stickyImage.svg";
@@ -16,7 +17,7 @@ function HomePage() {
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobileView(window.innerWidth <= 768); // Adjust the breakpoint to 1100px
+            setIsMobileView(window.innerWidth <= 768);
         };
 
         handleResize();
@@ -26,6 +27,11 @@ function HomePage() {
         return () => {
             window.removeEventListener("resize", handleResize);
         };
+    }, []);
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        setLoginState(token !== null);
     }, []);
 
     return (

@@ -37,7 +37,7 @@ function LoginForm() {
                 setAuth({
                     token: response.token,
                 });
-                navigate("/events");
+                navigate("/");
             }).catch((error) => {
                 setErrorMessage(error.message);  // Set the error message
             });

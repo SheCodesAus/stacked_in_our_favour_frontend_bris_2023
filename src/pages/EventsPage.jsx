@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import EventCard from '../components/EventCard';
 import EventCreationForm from '../components/EventCreationForm';
+import '../pages/EventStickyPage.css'
 import postEvent from '../api/post-event';
 import getEvents from "../api/get-events";
 

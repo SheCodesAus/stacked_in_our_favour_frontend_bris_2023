@@ -4,16 +4,27 @@ import "./EventCard.css";
 
 // Function to format the date and time for Australia
 const formatDateTime = (dateTimeString) => {
-    const options = {
+    const date = new Date(dateTimeString);
+
+    const optionsDate = {
         year: "numeric",
         month: "short",
         day: "2-digit",
+        weekday: "short"
+    };
+
+    const optionsTime = {
         hour: "2-digit",
         minute: "2-digit",
-        timeZoneName: "short",
+        hour12: true
     };
-    const date = new Date(dateTimeString);
-    return date.toLocaleDateString("en-AU", options);
+
+    const formattedDate = date.toLocaleDateString(undefined, optionsDate);
+    const formattedTimeStart = date.toLocaleTimeString(undefined, optionsTime);
+    date.setHours(date.getHours() + 1); // Add 1 hour to get the end time
+    const formattedTimeEnd = date.toLocaleTimeString(undefined, optionsTime);
+
+    return `${formattedDate}, ${formattedTimeStart} - ${formattedTimeEnd} `;
 };
 
 // Event Card component
@@ -37,6 +48,7 @@ function EventCard(props) {
                 <h2>{eventData.title}</h2>
                 <h4>Organised by {eventData.creator}</h4>
                 <img src={eventData.image} />
+                <p>{eventData.description}</p> {/* <-- Here's where we add the description */}
                 <h5>Location</h5>
                 <h4>{eventData.location}</h4>
                 <h5>Date and time</h5>
