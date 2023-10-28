@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import postLogin from "../api/postLogin";
 import useAuth from "../hooks/use-auth";
+import stickyImage from "../assets/stickyImage.svg"
+import "./LoginForm.css"
 import "./Form.css";
 
 function LoginForm() {
@@ -37,7 +39,7 @@ function LoginForm() {
                 setAuth({
                     token: response.token,
                 });
-                navigate("/events");
+                navigate("/");
             }).catch((error) => {
                 setErrorMessage(error.message);  // Set the error message
             });
@@ -46,7 +48,8 @@ function LoginForm() {
     
 
     return (
-        <form>
+        <form className="login-register-form">
+            <div className="form-block-text">
             <h1>Login</h1>
             {errorMessage && <div className="error-message">{errorMessage}</div>}  {/* Display the error message */}
             <div className="input-styling">
@@ -69,6 +72,10 @@ function LoginForm() {
             </div>
             <div className="input-styling">
                 <button type="submit" onClick={handleSubmit}><span>Login</span></button>
+            </div>
+            </div>
+            <div classname="form-block-image">
+                <img src={stickyImage} />
             </div>
         </form>
     );

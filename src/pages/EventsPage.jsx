@@ -1,37 +1,34 @@
-import useEvents from "../hooks/use-events";
-import "./EventsPage.css";
 import React, { useEffect, useState } from 'react';
 import EventCard from '../components/EventCard';
-import EventCreationForm from '../components/EventCreationForm'; 
-import { allEvents } from "../data";
-import "../components/NavBar.css";
-import "../components/EventCard.css";
-import "../components/EventCard";
-import { useNavigate } from "react-router-dom";
+import EventCreationForm from '../components/EventCreationForm';
+import '../pages/EventsPage.css';
 import postEvent from '../api/post-event';
-import getEvents from "../api/get-events"
+import getEvents from '../api/get-events';
 
 function EventsPage() {
     const [events, setEvents] = useState([]);
-    const [showPopup, setShowPopup] = useState(false);
     const [isCreatingEvent, setIsCreatingEvent] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false); 
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // Simulated authentication state
+
+    // Define the loadEvents function
+    const loadEvents = async () => {
+        try {
+            const eventsData = await getEvents();
+            setEvents(eventsData);
+        } catch (error) {
+            console.error('Failed to fetch events:', error);
+        }
+    };
 
     useEffect(() => {
         // Simulated authentication check
-        const authStatus = true; // Replace this with your actual authentication logic
+        const authStatus = checkAuth(); // Implement your actual authentication logic here
         setIsLoggedIn(authStatus);
 
-        const loadEvents = async () => {
-            try {
-                const eventsData = await getEvents();
-                setEvents(eventsData);
-            } catch (error) {
-                console.error("Failed to fetch events:", error);
-            }
-        };
-
-        loadEvents();
+        // Load events from the API if authenticated
+        if (authStatus) {
+            loadEvents();
+        }
     }, []);
 
     const openEventCreationModal = () => {
@@ -44,11 +41,7 @@ function EventsPage() {
 
     const handleEventCreation = async (newEventData) => {
         try {
-            const response = await postEvent(
-                newEventData.title,
-                newEventData.description,
-                newEventData.image
-            );
+            const response = await postEvent(newEventData); // Pass the entire object
             const newEvent = {
                 id: response.id,
                 ...newEventData,
@@ -56,13 +49,22 @@ function EventsPage() {
             setEvents([...events, newEvent]);
             closeEventCreationModal();
         } catch (error) {
-            console.error("Failed to create event:", error);
+            console.error('Failed to create event:', error);
         }
     };
 
+    // Simulated authentication logic
+    function checkAuth() {
+        // Implement your actual authentication logic here
+        // Return true if the user is authenticated, false otherwise
+        // For this example, we simulate authentication by returning true
+        const token = window.localStorage.getItem('token');
+        return !!token; // Check if a token exists in local storage
+    }
+
     return (
         <div>
-            <h1>Events</h1>
+            <div>
             {isLoggedIn && (
                 <div className="create-event-container">
                     <button className="create-event-button" onClick={openEventCreationModal}>
@@ -70,6 +72,13 @@ function EventsPage() {
                     </button>
                 </div>
             )}
+            </div>
+            <div id="event-page-details">
+                <h1>Events</h1>
+                <h6>
+                    She Codes is a movement empowering women to code and offers pathways into tech careers by organizing free programming workshops and events. WinStack helps to support the workshops by creating an inclusive space for everyone to share their wins.
+                </h6>
+            </div>
             <div id="event-list">
                 {events.map((eventData, key) => (
                     <EventCard key={key} eventData={eventData} />
@@ -80,11 +89,12 @@ function EventsPage() {
                     <EventCreationForm
                         onClose={closeEventCreationModal}
                         onEventCreate={handleEventCreation}
+                        isLoggedIn={isLoggedIn} // Pass isLoggedIn information
                     />
                 </div>
             )}
         </div>
-    );
+    );    
 }
 
 export default EventsPage;

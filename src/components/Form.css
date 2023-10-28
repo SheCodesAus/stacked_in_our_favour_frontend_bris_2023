@@ -6,6 +6,21 @@
     padding: 12px 24px 12px 24px;
 }
 
+.login-register-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* .content-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 70px;
+} */
+
+img {
+    width: 100%;
+}
+
 form {
     margin: 20px;
     width: 40%;
@@ -102,8 +117,9 @@ button:hover span:after {
 }
 
 h1 {
-    padding: 12px 24px 12px 24px;
+    padding: 12px 0px 12px 0px;
     margin: 0;
+    /* text-align: center; */
 }
 
 label {
@@ -113,32 +129,3 @@ label {
     font-style: normal;
     font-weight: 500;
 }
-
-.error-message {
-<<<<<<< HEAD
-    color: #8246AF;              
-    font-weight: bold;        
-    margin-top: 10px;         
-    font-size: 1.1rem;        
-    text-align: center;       
-}
-
-.close-button {
-    background: none;
-    border: none;
-    font-size: 1.5em;
-    cursor: pointer;
-}
-=======
-    color: var(--light-purple);
-    font-weight: bold;
-    margin-top: 10px;
-    font-size: 1.1rem;
-    text-align: center;
-}
-
-
-
-
-
->>>>>>> 6addcc16a7c6dd6189363187b7b0a3ab834ec1dc

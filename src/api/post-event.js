@@ -1,35 +1,26 @@
-async function postEvent(title, description, image) {
-    // is this getting the right date?
-    // let date = new Date().toJSON();
+// post-event.js
+async function postEvent(eventData) {
     const url = `${import.meta.env.VITE_API_URL}/events/`;
     const token = window.localStorage.getItem("token");
-    // console.log("i am post event")
+    
+    if (!token) {
+        throw new Error("No token found in local storage");
+    }
 
     const response = await fetch(url, {
-        method: "POST", // We neeed to tell the server that we are sending JSON data so we set the COntent Type header to application/json
+        method: "POST",
         headers: {
             "Content-Type": "application/json",
-            // authentication/authorization
             "Authorization": `Token ${token}`,
         },
-        body: JSON.stringify({
-            "title": title,
-            "description": description,
-            "image": image,
-            // user does not control - we define directly here and send straight to backend
-            "isOpen": true,
-            // user does not control
-            // "dateCreated": date,
-        }),
+        body: JSON.stringify(eventData),  // Send the entire object
     });
 
-    if (!response.ok) { // error handling
-        const fallbackError = `Error trying to post event`;
-
+    if (!response.ok) {
+        const fallbackError = "Error trying to post event";
         const data = await response.json().catch(() => {
             throw new Error(fallbackError);
         });
-        
         const errorMessage = data?.detail ?? fallbackError;
         throw new Error(errorMessage);
     }
