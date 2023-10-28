@@ -28,7 +28,12 @@
 /* Events Page Styles */
 .create-event-container {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: end;
+    width: 100%;
+    align-content: center;
+    margin: 0px;
+    padding: 70px 24px 12px 24px;
 }
 
 .button-container {
@@ -38,7 +43,7 @@
 
 .create-event-button,
 .cancel-button {
-    width: 100%;
+    width: 20%;
     background: var(--pale-grey);
     color: var(--light-purple);
     border: 2px solid var(--light-purple);
@@ -48,15 +53,13 @@
     font-size: 16px;
     transition: border-color 0.2s;
     margin: 4px;
+    text-decoration: none;
+    text-align: center;
 }
 
 .create-event-button:hover,
 .cancel-button:hover {
-    width: 100%;
-    background: var(--pale-purple);
-    color: var(--light-purple);
-    border: 2px solid var(--light-purple);
-    transition: border-color 0.2s;
+    width: 20%;
 }
 
 

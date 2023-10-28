@@ -51,9 +51,11 @@ function EventCard(props) {
                 <p>{eventData.description}</p> {/* <-- Here's where we add the description */}
                 <h5>Location</h5>
                 <h4>{eventData.location}</h4>
-                <h5>Date and time</h5>
-                <h4>Start: {formatDateTime(eventData.openDate)}</h4>
-                <h4>Finish: {formatDateTime(eventData.closeDate)}</h4>
+                <h5>Date and Time</h5>
+                <h4>15 May 2024 9AM AEST</h4>
+                <div className="button-container">
+                    <a href className="free-button">FREE</a>
+                </div>
             </Link>
         </div>
     );

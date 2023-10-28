@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import postRegister from "../api/postRegister";
 import useAuth from "../hooks/use-auth";
+import stickyImage from "../assets/stickyImage.svg"
 import "./Form.css";
 
 function RegisterForm() {
@@ -140,6 +141,9 @@ function RegisterForm() {
                 <button type="submit"><span>Register</span></button>
             </div>
             <a href="/login" className="style-a">Login</a>
+            <div classname="form-block-image">
+                <img src={stickyImage} />
+            </div>
         </form>
     );
 }

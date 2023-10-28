@@ -1,49 +1,61 @@
-/* Display three cards in a row on desktop */
+/* Add a container for the page content */
 .desktop-view {
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: (3, 1fr);
 }
 
-
-/* Display a single card in a column on mobile */
-.mobile-view {
-    grid-template-columns: 1fr; 
+.page-container {
+    max-width: 1200px; /* Adjust the maximum width to your preference */
+    margin: 0 auto; /* Center align the content */
+    padding: 20px; /* Add some padding for better spacing */
 }
 
-
-/* styling for events page */
-#event-list {
-    display: grid;
-    grid-template-columns: 30% 30% 30%;
-    height: 30%;
-    column-gap: 10px;
-    row-gap: 10px;
-    overflow: hidden; /* Add this to hide the image overflow */
-    min-width: 300px;
-}
-
-
-
+/* Styling for the page header */
 .events-page-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 16px 0;
-}
-
-.events-page-header button {
-    background: var(--light-purple);
-    color: var(--white);
-    border: 2px solid var(--dark-purple);;
-    display: flex;
-    padding: 12px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 24px;
-    transition: border-color 0.2s;
+    margin-bottom: 20px; /* Increase spacing at the top */
 }
 
 .events-page-header h1 {
-    margin: 16px;
-    margin-bottom: 0;
+    font-size: 28px; /* Increase font size for the header */
+    color: var(--light-purple);
+}
+
+/* Styling for the event description */
+#event-page-details {
+    margin-bottom: 20px; /* Increase spacing at the bottom */
+    width: 60%;
+    margin: 12px 50px 50px 50px
+}
+
+h6 {
+    font-size: 24px; /* Adjust font size for the description */
+    font-weight: 200; /* Make the description slightly bolder for readability */
+    color: var(--dark-grey); /* Use a darker color for better contrast */
+}
+
+/* Styling for the event cards */
+#event-list {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    margin: 12xpx 24px 12px 24px;
+    height: 30%;
+    column-gap: 10px;
+    /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); Responsive grid with minimum width */
+    row-gap: 10px; /* Add some gap between event cards */
+    justify-content: space-around; /* Distribute cards evenly */
+    align-items: flex-start; /* Align cards to the top */
+}
+
+/* Responsive layout for event cards */
+@media screen and (max-width: 768px) {
+    #event-list {
+        grid-template-columns: 1fr; /* Single column layout on smaller screens */
+    }
+
+    .events-page-header {
+        flex-direction: column; /* Stack header elements vertically on smaller screens */
+        align-items: flex-start; /* Align header items to the left */
+    }
 }
