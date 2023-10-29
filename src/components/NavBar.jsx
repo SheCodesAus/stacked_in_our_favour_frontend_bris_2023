@@ -6,12 +6,18 @@ import logoDesktop from "../img/logoDesktop.png";
 import logoMobile from "../img/logoMobile.png";
 import "./NavBar.css";
 
+let setLoginState;
+
 function NavBar() {
     const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const location = useLocation();
     const { auth, setAuth } = useAuth();
+
+    setLoginState = (state) => {
+        setIsLoggedIn(state);
+    };
 
     const handleLogout = () => {
         localStorage.removeItem('token');
@@ -36,22 +42,10 @@ function NavBar() {
     }, []);
 
     useEffect(() => {
-        setIsLoggedIn(window.localStorage.getItem("token") !== null);
-
-        const handleStorageChange = () => {
-            setIsLoggedIn(window.localStorage.getItem("token") !== null);
-        };
-
-        window.addEventListener('storage', handleStorageChange);
-
-        return () => {
-            window.removeEventListener('storage', handleStorageChange);
-        };
+        setIsLoggedIn(localStorage.getItem("token") !== null);
     }, []);
 
     const isActive = (path) => location.pathname === path ? 'active' : '';
-
-    const isEventsOrStickyPage = location.pathname.startsWith("/events") || location.pathname.startsWith("/stickynotes");
 
     return (
         <div>
@@ -63,7 +57,7 @@ function NavBar() {
                     <nav className="desktop-nav">
                         {isLoggedIn ? (
                             <>
-                                {isEventsOrStickyPage && <Link to="/" className={`home-link ${isActive('/')}`}>Home</Link>}
+                                <Link to="/" className={`home-link ${isActive('/')}`}>Home</Link>
                                 <Link to="/events" className={`events-link ${isActive('/events')}`}>Events</Link>
                                 <Link to="/" className={`logout-link ${isActive('/')}`} onClick={handleLogout}>Logout</Link>
                             </>
@@ -87,7 +81,7 @@ function NavBar() {
                     <nav className="mobile-nav">
                         {isLoggedIn ? (
                             <>
-                                {isEventsOrStickyPage && <Link to="/" className={`home-link ${isActive('/')}`}>Home</Link>}
+                                <Link to="/" className={`home-link ${isActive('/')}`}>Home</Link>
                                 <Link to="/events" className={`events-link ${isActive('/events')}`}>Events</Link>
                                 <Link to="/" className={`logout-link ${isActive('/')}`} onClick={handleLogout}>Logout</Link>
                             </>
@@ -107,5 +101,4 @@ function NavBar() {
     );
 }
 
-export default NavBar;
-
+export { NavBar as default, setLoginState };

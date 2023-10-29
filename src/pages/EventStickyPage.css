@@ -9,3 +9,37 @@ event-sticky-page {
     gap: 20px;  /* Shorter form to specify both row-gap and column-gap */
     margin: 70px;
 }
+
+#sticky-page-details {
+    width: 100%;
+    padding: 00px 20px 50px 50px;
+    background-color: var(--pale-purple);
+}
+
+h1 {
+    color: var(--light-purple);
+}
+
+.event-secondary-details {
+    margin: 12px 0px 32px 0px;
+}
+
+/* h3 {
+    color: var(--light-purple);
+} */
+
+.create-update-button {
+    text-decoration: none;
+    margin-right: 80px;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.create-update-button:hover {
+    background-color: var(--dark-purple);
+    margin-right: 80px;
+    margin-top: 20px;
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+}

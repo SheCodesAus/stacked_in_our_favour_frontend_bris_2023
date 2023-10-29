@@ -3,16 +3,18 @@ import "./NavBar.css";
 import "./Form.css";
 import "./Dialog.css";
 
+const defaultDate = new Date();
+defaultDate.setHours(18, 0, 0, 0); // Set to today at 6:00:00 PM
+
 function EventCreationForm({ onClose, onEventCreate, onEventEdit, eventDataToEdit }) {
     const [isEditing, setIsEditing] = useState(false);
     const [eventData, setEventData] = useState({
         title: "",
-        creator: "",
-        image: "",
         description: "",
         location: "",
-        date: "",
-        time: "",
+        creator: "organiser",
+        image: "",
+        isOpen: true,
     });
     const [stepComplete, setStepComplete] = useState(false); // Step completion state
 
@@ -24,11 +26,11 @@ function EventCreationForm({ onClose, onEventCreate, onEventEdit, eventDataToEdi
     }, [eventDataToEdit]);
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setEventData({
-            ...eventData,
-            [name]: value,
-        });
+        const { name, value, type, checked } = e.target;
+        setEventData((prevData) => ({
+            ...prevData,
+            [name]: type === "checkbox" ? checked : value,
+        }));
     };
 
     const handleStepCompleteChange = () => {
@@ -39,9 +41,11 @@ function EventCreationForm({ onClose, onEventCreate, onEventEdit, eventDataToEdi
         if (isEditing) {
             onEventEdit(eventData);
         } else {
-            onEventCreate(eventData);
+            onEventCreate(eventData); // pass the entire eventData object
         }
+        onClose();
     };
+    
 
     return (
         <form onSubmit={handleCreateEvent}>
@@ -63,18 +67,6 @@ function EventCreationForm({ onClose, onEventCreate, onEventEdit, eventDataToEdi
                         onChange={handleChange}
                     />
                     <input
-                        type="date"
-                        name="date"
-                        value={eventData.date}
-                        onChange={handleChange}
-                    />
-                    <input
-                        type="time"
-                        name="time"
-                        value={eventData.time}
-                        onChange={handleChange}
-                    />
-                    <input
                         type="text"
                         name="location"
                         placeholder="Event Location"
@@ -84,21 +76,20 @@ function EventCreationForm({ onClose, onEventCreate, onEventEdit, eventDataToEdi
                     <input
                         type="text"
                         name="image"
-                        placeholder="Cover Image"
+                        placeholder="Image URL"
                         value={eventData.image}
                         onChange={handleChange}
                     />
-                    <div>
-                        <label>
-                            Event Complete:
-                            <input
-                                type="checkbox"
-                                name="stepComplete"
-                                checked={stepComplete}
-                                onChange={handleStepCompleteChange}
-                            />
-                        </label>
-                    </div>
+                    {/* Checkbox for is_open */}
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="isOpen"
+                            checked={eventData.isOpen}
+                            onChange={handleChange}
+                        />
+                        Is Open
+                    </label>
                     <div className="button-container">
                         <button onClick={handleCreateEvent} className='create-event-button'>
                             {isEditing ? 'Save Event' : 'Create Event'}

@@ -1,10 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Form.css";
 
 import postSticky from "../api/post-sticky";
 
-function StickyNoteForm () {
+function StickyNoteForm() {
     const navigate = useNavigate();
     const currentEventId = window.localStorage.getItem('currentEventId');
     console.log('Current Event ID:', currentEventId);
@@ -14,7 +14,6 @@ function StickyNoteForm () {
         "anonymous": false
     });
 
-    // New state for the Anonymous checkbox
     const [isAnonymous, setIsAnonymous] = useState(false);
 
     const handleChange = (event) => {
@@ -28,16 +27,19 @@ function StickyNoteForm () {
 
     const handleAnonymousChange = () => {
         setIsAnonymous(!isAnonymous);
+        // Also update stickyDetails.anonymous here
+        setStickyDetails((prevStickyDetails) => ({
+            ...prevStickyDetails,
+            anonymous: !isAnonymous,
+        }));
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Assume currentUsername holds the username of the logged-in user
-        const currentUsername = window.localStorage.getItem("username"); // Or fetch it from where you store it
+        const currentUsername = window.localStorage.getItem("username");
 
-        if (!currentUsername) {
+        if (!currentUsername && !isAnonymous) {
             console.log("User is not logged in. Redirecting to login page.");
-            // Redirect to login or show a message
             return;
         }
         console.log('Current Username:', currentUsername);
@@ -46,7 +48,7 @@ function StickyNoteForm () {
             stickyDetails.noteText,
             stickyDetails.anonymous,
             currentEventId,
-            currentUsername  // Pass the authorID here
+            currentUsername
         ).then((response) => {
             navigate(`/events/${currentEventId}`);
         });
@@ -57,22 +59,29 @@ function StickyNoteForm () {
             <h1>Create Sticky Note</h1>
             <div className="text-field-style">
                 <label htmlFor="noteText">Share your win:</label>
-                <input 
-                    type="text" 
-                    id="noteText" 
+                <input
+                    type="text"
+                    id="noteText"
                     placeholder="Share your win in 50 characters or less"
                     onChange={handleChange}
-                />      
+                />
             </div>
             <div>
-                <input 
-                    type="checkbox" 
-                    onChange={handleAnonymousChange} // New handler here
-                /> 
-                Anonymous    
+                <input
+                    type="checkbox"
+                    onChange={handleAnonymousChange}
+                />
+                Anonymous
             </div>
             <div className="button-style">
                 <button type="submit" onClick={handleSubmit}><span>Create</span></button>
+            </div>
+            <div>
+                {isAnonymous ? (
+                    <div>Commented by Anonymous</div>
+                ) : (
+                    <div>Commented by {window.localStorage.getItem("username")}</div>
+                )}
             </div>
         </form>
     );

@@ -25,6 +25,16 @@ html {
     box-sizing: inherit;
 }
 
+h3 {
+    margin: 10px;
+}
+
+.home-block-text h2 {
+    font-family: Roboto;
+    font-weight: 300;
+    color: var(--dark-grey);
+    /* padding-left: 24px; */
+} 
 
 p,
 h1,
@@ -65,6 +75,8 @@ ul {
 }
 
 /* Nav link styles */
+
+.home-link,
 .login-link, 
 .register-link, 
 .logout-link, 
@@ -75,6 +87,7 @@ ul {
     margin-top: 0px;
 }
 
+.home-link:hover,
 .login-link:hover, 
 .register-link:hover, 
 .logout-link:hover, 
@@ -87,6 +100,7 @@ ul {
 
 /* Desktop view */
 
+.home-link,
 .login-link, 
 .register-link, 
 .logout-link, 
@@ -97,6 +111,7 @@ ul {
     margin-top: 0px;
 }
 
+.home-link,
 .login-link:hover, 
 .register-link:hover, 
 .logout-link:hover, 
@@ -106,7 +121,13 @@ ul {
     margin-top: 0px;
 }
 
-
+.small-image {
+    display: block; /* Make the image a block element */
+    margin: 0 auto; /* Center the image horizontally */
+    width: 50px; /* Set the desired width for the images */
+    height: auto; /* Auto-adjust height to maintain aspect ratio */
+    margin-bottom: 10px; /* Adjust margin as needed to control vertical spacing */
+}
 
 /* Updated styles for desktop view */
 
