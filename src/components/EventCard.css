@@ -39,6 +39,7 @@
     margin: 4px 8px 4px 8px;
     color: var(--dark-purple);
     font-weight: bold;
+    font-weight: bold;
 }
 
 .event-card h4 {
@@ -47,7 +48,12 @@
 
 .event-card h5 {
     margin: 8px 8px 8px 8px;
+    margin: 8px 8px 8px 8px;
     font-weight: bold;
+    color: var(--light-purple);
+    font-size: small;
+    text-transform: uppercase;
+    letter-spacing: .5px;
     color: var(--light-purple);
     font-size: small;
     text-transform: uppercase;
@@ -60,11 +66,12 @@
 
 .event-card h5:last-of-type {
     margin: 25px 8px 8px 8px;
+    margin: 25px 8px 8px 8px;
 }
 
 .event-card:hover {
     background-color: var(--pale-purple);
-    border: 2px solid var(--light-purple);
+        border: 2px solid var(--light-purple);;
 }
 
 .free-button {
@@ -75,7 +82,7 @@
     border-radius: 8px;
     justify-content: center;
     display: flex;
-    color: ar(--dark-purple);
+    color: var(--dark-purple);
 }
 
 /* .free-button:hover {
@@ -84,37 +91,6 @@
 
 a.free-button {
     color: var(--dark-purple);
-    padding: 22px 42px
-}
-
-.button-container {
-    display: flex;
-    align-items: right;
-    margin: 10px;
-    flex-direction: row;
-}
-
-.tooltip {
-    position: relative;
-    display: inline-block;
-}
-
-/* Tooltip text (hidden by default) */
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.3s;
 }
 
 /* Show the tooltip text when hovering over the button */

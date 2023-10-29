@@ -3,13 +3,46 @@ import "./NavBar.css";
 import "./EventCard.css";
 
 // Function to format the date and time for Australia
+// const formatDateTime = (dateTimeString) => {
+//     const date = new Date(dateTimeString);
+
+//     const optionsDate = {
+//         year: "numeric",
+//         month: "short",
+//         day: "2-digit",
+//         hour: "2-digit",
+//         minute: "2-digit",
+//         hour12: true,
+//         weekday: "short"
+//     };
+
+//     const optionsTime = {
+//         hour: "2-digit",
+//         minute: "2-digit",
+//         hour12: true
+//     }
+
+//     const formattedDate = date.toDateString();
+//     const formattedTimeStart = date.toTimeString();
+//     const formattedTimeEnd = date.toTimeString();
+
+//     return `${formattedDate}, ${formattedTimeStart} - ${formattedTimeEnd} AEST`;
+// };
+
 const formatDateTime = (dateTimeString) => {
+    const date = new Date(dateTimeString);
+
+    const optionsDate = {
     const date = new Date(dateTimeString);
 
     const optionsDate = {
         year: "numeric",
         month: "short",
         day: "2-digit",
+        weekday: "short"
+    };
+
+    const optionsTime = {
         weekday: "short"
     };
 
@@ -24,8 +57,10 @@ const formatDateTime = (dateTimeString) => {
     date.setHours(date.getHours() + 1); // Add 1 hour to get the end time
     const formattedTimeEnd = date.toLocaleTimeString(undefined, optionsTime);
 
-    return `${formattedDate}, ${formattedTimeStart} - ${formattedTimeEnd} `;
+    return `${formattedDate}, ${formattedTimeStart} - ${formattedTimeEnd}`;
 };
+
+
 
 // Event Card component
 function EventCard(props) {
@@ -43,6 +78,7 @@ function EventCard(props) {
     const eventLink = `/events/${eventData.id}`;
 
     return (
+        // <div className="desktop-view">
         <div className="event-card">
             <Link to={eventLink}>
                 <h2>{eventData.title}</h2>
@@ -62,6 +98,7 @@ function EventCard(props) {
                 </div>
             </Link>
         </div>
+        // </div>
     );
 }
 

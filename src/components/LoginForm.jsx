@@ -5,6 +5,8 @@ import useAuth from "../hooks/use-auth";
 import stickyImage from "../assets/stickyImage.svg"
 import "./LoginForm.css"
 import "./Form.css";
+import stickyImage from "../assets/stickyImage.svg";
+
 
 function LoginForm() {
     const navigate = useNavigate();
@@ -79,6 +81,34 @@ function LoginForm() {
             </div>
         </form>
     );
+    // return (
+    //     <>
+    //         <div className="home-block">
+    //             <div className="home-block-text">
+    //                 <h1>
+    //                     Celebrate WINS during your{" "}
+    //                     <span style={{ color: PurpleText.color }}>SHE</span>
+    //                     <span style={{ color: YellowText.color }}>&#123;CODES&#125;</span> workshops.
+    //                 </h1>
+    //                 <h2 style={{ marginTop: "24px" }}>
+    //                     Share successes with your peers and mentors before, during and after workshop events!
+    //                 </h2>
+    //             </div>
+    //             <div
+    //                 className={`home-block-image ${
+    //                     isMobileView ? "mobile-view" : "desktop-view"
+    //                 }`}
+    //             >
+    //                 <img
+    //                     src={stickyImage}
+    //                     alt="Illustration of people posting sticky notes onto a board."
+    //                     className={`shrink-image ${isMobileView ? "disappear" : ""}`}
+    //                 />
+    //             </div>
+    //         </div>
+    //         <PromoteBanner isMobileView={isMobileView} />
+    //     </>
+    // );
 }
 
 export default LoginForm;

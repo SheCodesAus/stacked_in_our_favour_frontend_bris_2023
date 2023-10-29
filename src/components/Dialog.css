@@ -59,7 +59,11 @@
 
 .create-event-button:hover,
 .cancel-button:hover {
-    width: 20%;
+    width: 100%;
+    background: var(--pale-purple);
+    color: var(--light-purple);
+    border: 2px solid var(--light-purple);
+    transition: border-color 0.2s;
 }
 
 

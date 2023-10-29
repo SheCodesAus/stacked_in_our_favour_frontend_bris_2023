@@ -4,6 +4,7 @@ import EventCreationForm from '../components/EventCreationForm';
 import '../pages/EventsPage.css';
 import postEvent from '../api/post-event';
 import getEvents from '../api/get-events';
+import "./EventsPage.css";
 
 function EventsPage() {
     const [events, setEvents] = useState([]);

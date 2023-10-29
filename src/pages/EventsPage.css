@@ -9,7 +9,22 @@
     padding: 20px; /* Add some padding for better spacing */
 }
 
-/* Styling for the page header */
+
+
+/* styling for events page */
+#event-list {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    margin: 12px 24px 12px 24px;
+    height: 30%;
+    column-gap: 10px;
+    row-gap: 10px;
+    overflow: hidden; /* Add this to hide the image overflow */
+    min-width: 300px;
+}
+
+
+
 .events-page-header {
     display: flex;
     justify-content: space-between;
