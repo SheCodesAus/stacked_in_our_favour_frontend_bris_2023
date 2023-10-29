@@ -124,7 +124,7 @@ ul {
 .small-image {
     display: block; /* Make the image a block element */
     margin: 0 auto; /* Center the image horizontally */
-    width: 50px; /* Set the desired width for the images */
+    width: 60px; /* Set the desired width for the images */
     height: auto; /* Auto-adjust height to maintain aspect ratio */
     margin-bottom: 10px; /* Adjust margin as needed to control vertical spacing */
 }

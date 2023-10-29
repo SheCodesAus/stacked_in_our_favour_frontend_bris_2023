@@ -54,7 +54,10 @@ function EventCard(props) {
                 <h5>Date and Time</h5>
                 <h4>15 May 2024 9AM AEST</h4>
                 <div className="button-container">
+                    <div className="tooltip">
+                    <span className="tooltiptext">This is a free event</span>
                     <a href className="free-button">FREE</a>
+                    </div>
                 </div>
             </Link>
         </div>

@@ -84,6 +84,7 @@
 
 a.free-button {
     color: var(--dark-purple);
+    padding: 22px 42px
 }
 
 .button-container {
@@ -91,4 +92,33 @@ a.free-button {
     align-items: right;
     margin: 10px;
     flex-direction: row;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tooltip text (hidden by default) */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Show the tooltip text when hovering over the button */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
 }
