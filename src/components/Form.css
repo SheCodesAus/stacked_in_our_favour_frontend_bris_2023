@@ -129,3 +129,18 @@ label {
     font-style: normal;
     font-weight: 500;
 }
+
+.error-message {
+    color: #8246AF;              
+    font-weight: bold;        
+    margin-top: 10px;         
+    font-size: 1.1rem;        
+    text-align: center;       
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+}
