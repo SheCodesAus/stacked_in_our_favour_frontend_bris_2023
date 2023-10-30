@@ -59,3 +59,11 @@ h6 {
         align-items: flex-start; /* Align header items to the left */
     }
 }
+
+.error-message {
+    color: dark purple;
+    font-weight: bold;
+    text-decoration: underline;
+    margin: 6px;
+    text-align: center;
+}

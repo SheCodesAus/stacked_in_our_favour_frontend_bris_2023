@@ -8,9 +8,9 @@ import getEvents from '../api/get-events';
 function EventsPage() {
     const [events, setEvents] = useState([]);
     const [isCreatingEvent, setIsCreatingEvent] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // Simulated authentication state
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [error, setError] = useState(''); // State for handling error messages
 
-    // Define the loadEvents function
     const loadEvents = async () => {
         try {
             const eventsData = await getEvents();
@@ -21,11 +21,8 @@ function EventsPage() {
     };
 
     useEffect(() => {
-        // Simulated authentication check
-        const authStatus = checkAuth(); // Implement your actual authentication logic here
+        const authStatus = checkAuth();
         setIsLoggedIn(authStatus);
-
-        // Load events from the API if authenticated
         if (authStatus) {
             loadEvents();
         }
@@ -33,6 +30,7 @@ function EventsPage() {
 
     const openEventCreationModal = () => {
         setIsCreatingEvent(true);
+        setError(''); // Reset the error message when opening the modal
     };
 
     const closeEventCreationModal = () => {
@@ -41,37 +39,41 @@ function EventsPage() {
 
     const handleEventCreation = async (newEventData) => {
         try {
-            const response = await postEvent(newEventData); // Pass the entire object
+            const response = await postEvent(newEventData);
             const newEvent = {
                 id: response.id,
                 ...newEventData,
             };
             setEvents([...events, newEvent]);
             closeEventCreationModal();
+            setError(''); // Clear the error message on successful event creation
         } catch (error) {
+            const username = window.localStorage.getItem('username'); // Retrieve the username from local storage
+            let errorMessage = 'An error occurred while creating the event. Please try again later.';
+            if (error.message === "You do not have permission to perform this action.") {
+                errorMessage = `Sorry, ${username}, only SheCodes organiser's can create events - Click on an event to add a sitcky note instead.`;
+            }
+            setError(errorMessage);
             console.error('Failed to create event:', error);
         }
     };
 
-    // Simulated authentication logic
     function checkAuth() {
-        // Implement your actual authentication logic here
-        // Return true if the user is authenticated, false otherwise
-        // For this example, we simulate authentication by returning true
         const token = window.localStorage.getItem('token');
-        return !!token; // Check if a token exists in local storage
+        return !!token;
     }
 
     return (
         <div>
+            {error && <div className="error-message">{error}</div>}
             <div>
-            {isLoggedIn && (
-                <div className="create-event-container">
-                    <button className="create-event-button" onClick={openEventCreationModal}>
-                        Create Event
-                    </button>
-                </div>
-            )}
+                {isLoggedIn && (
+                    <div className="create-event-container">
+                        <button className="create-event-button" onClick={openEventCreationModal}>
+                            Create Event
+                        </button>
+                    </div>
+                )}
             </div>
             <div id="event-page-details">
                 <h1>Events</h1>
@@ -80,8 +82,8 @@ function EventsPage() {
                 </h6>
             </div>
             <div id="event-list">
-                {events.map((eventData, key) => (
-                    <EventCard key={key} eventData={eventData} />
+                {events.map((eventData, index) => (
+                    <EventCard key={index} eventData={eventData} />
                 ))}
             </div>
             {isCreatingEvent && (
@@ -89,12 +91,12 @@ function EventsPage() {
                     <EventCreationForm
                         onClose={closeEventCreationModal}
                         onEventCreate={handleEventCreation}
-                        isLoggedIn={isLoggedIn} // Pass isLoggedIn information
+                        isLoggedIn={isLoggedIn}
                     />
                 </div>
             )}
         </div>
-    );    
+    );
 }
 
 export default EventsPage;
