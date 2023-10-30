@@ -1,6 +1,5 @@
 async function postRegister(email, username, password, role, organiserID) {
-    const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-    const url = `${baseUrl}/register/`;
+    const url = `${import.meta.env.VITE_API_URL}/register/`;
 
     console.log("postRegister called with:", email, username, password, role);
 
