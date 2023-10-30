@@ -15,6 +15,8 @@ function EventCreationForm({ onClose, onEventCreate, onEventEdit, eventDataToEdi
         creator: "organiser",
         image: "",
         isOpen: true,
+        start_datetime:"",
+        finish_datetime: ""
     });
     const [stepComplete, setStepComplete] = useState(false); // Step completion state
 
@@ -27,6 +29,7 @@ function EventCreationForm({ onClose, onEventCreate, onEventEdit, eventDataToEdi
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
+        console.log (name, value,)
         setEventData((prevData) => ({
             ...prevData,
             [name]: type === "checkbox" ? checked : value,
@@ -80,6 +83,20 @@ function EventCreationForm({ onClose, onEventCreate, onEventEdit, eventDataToEdi
                         value={eventData.image}
                         onChange={handleChange}
                     />
+                    <input
+                        type="datetime-local"
+                        id="start_datetime"
+                        name="start_datetime"
+                        value={eventData.start_datetime}
+                        onChange={handleChange}
+                        />
+                    <input
+                        type="datetime-local"
+                        id="finish_datetime"
+                        name="finish_datetime"
+                        value={eventData.finish_datetime}
+                        onChange={handleChange}
+                        />
                     {/* Checkbox for is_open */}
                     <label>
                         <input
